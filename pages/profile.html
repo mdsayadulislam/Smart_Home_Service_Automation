@@ -1,63 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Profile — HomeEase</title>
   <link rel="stylesheet" href="../assets/css/global.css"/>
   <link rel="stylesheet" href="../assets/css/dashboard.css"/>
-  <style>
-    .profile-top-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--white);border-bottom:1px solid var(--border);}
-    .brand-sm{display:flex;align-items:center;gap:8px;font-size:17px;font-weight:800;color:var(--primary);}
-    .brand-sm .brand-icon{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--primary-mid),var(--primary));display:flex;align-items:center;justify-content:center;}
-    .brand-sm .brand-icon svg{width:16px;height:16px;color:#fff;}
-    .edit-btn{display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--primary);background:var(--primary-light);border:none;border-radius:999px;padding:7px 14px;cursor:pointer;transition:background .2s;}
-    .edit-btn:hover{background:#DDE0FF;}
-    .edit-btn svg{width:14px;height:14px;}
-
-    /* Hero */
-    .profile-hero{background:var(--white);padding:24px 18px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;border-bottom:1px solid var(--border);}
-    .avatar-wrap{position:relative;margin-bottom:14px;}
-    .profile-avatar{width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid var(--primary);box-shadow:0 4px 16px rgba(59,47,201,.25);}
-    .avatar-cam{position:absolute;bottom:2px;right:2px;width:28px;height:28px;border-radius:50%;background:var(--primary);border:2.5px solid #fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(59,47,201,.3);}
-    .avatar-cam svg{width:14px;height:14px;color:#fff;}
-    .profile-name{font-size:20px;font-weight:800;color:var(--text-dark);}
-    .profile-sub{font-size:13px;color:var(--text-muted);margin-top:3px;}
-    .verified-pill{display:inline-flex;align-items:center;gap:5px;background:#F0FDF4;color:#15803D;font-size:12px;font-weight:700;padding:5px 14px;border-radius:999px;margin-top:10px;border:1px solid #BBF7D0;}
-    .verified-pill svg{width:13px;height:13px;}
-    .stats-row{display:flex;width:100%;margin-top:16px;gap:1px;}
-    .stat-col{flex:1;text-align:center;padding:10px 4px;background:var(--input-bg);border-radius:12px;}
-    .stat-col:not(:last-child){margin-right:8px;}
-    .stat-num{font-size:18px;font-weight:800;color:var(--primary);}
-    .stat-lbl{font-size:11px;color:var(--text-muted);margin-top:2px;}
-
-    /* Sections */
-    .profile-scroll{flex:1;overflow-y:auto;padding-bottom:80px;}
-    .profile-section{margin:16px 18px 0;}
-    .ps-title{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;}
-    .ps-card{background:var(--white);border-radius:16px;overflow:hidden;border:1.5px solid var(--border);box-shadow:0 2px 10px rgba(59,47,201,.04);}
-    .ps-row{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s;}
-    .ps-row:last-child{border-bottom:none;}
-    .ps-row:hover{background:var(--input-bg);}
-    .ps-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;}
-    .ps-info{flex:1;}
-    .ps-label{font-size:14px;font-weight:600;color:var(--text-dark);}
-    .ps-value{font-size:12px;color:var(--text-muted);margin-top:2px;}
-    .ps-right{display:flex;align-items:center;gap:8px;}
-    .ps-chevron svg{width:16px;height:16px;color:var(--text-light);}
-    .ps-verified{font-size:11px;font-weight:700;color:var(--green);}
-    .ps-toggle-track{width:40px;height:22px;border-radius:999px;background:#D1D5F0;position:relative;cursor:pointer;transition:background .25s;flex-shrink:0;}
-    .ps-toggle-track.on{background:var(--primary);}
-    .ps-toggle-thumb{position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2);transition:transform .25s;}
-    .ps-toggle-track.on .ps-toggle-thumb{transform:translateX(18px);}
-    .payment-logo{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex-shrink:0;}
-    .primary-tag{background:var(--primary-light);color:var(--primary);font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;}
-    .add-row{display:flex;align-items:center;gap:10px;padding:12px 16px;cursor:pointer;transition:background .15s;}
-    .add-row:hover{background:var(--input-bg);}
-    .add-row-text{font-size:14px;font-weight:600;color:var(--primary);}
-    .logout-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;background:var(--white);border:1.5px solid #FCA5A5;border-radius:14px;color:#DC2626;font-size:15px;font-weight:700;cursor:pointer;margin:16px 0;transition:background .15s,transform .15s;}
-    .logout-btn:hover{background:#FEF2F2;transform:translateY(-1px);}
-    .logout-btn svg{width:18px;height:18px;}
-  </style>
+  <link rel="stylesheet" href="../assets/css/profile.css"/>
 </head>
 <body class="dashboard-page">
 <div class="app-shell">
@@ -65,11 +14,19 @@
   <!-- Top bar -->
   <header class="profile-top-bar">
     <div class="brand-sm">
-      <div class="brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg></div>
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
+          <path d="M9 21V12h6v9"/>
+        </svg>
+      </div>
       HomeEase
     </div>
-    <button class="edit-btn" id="editProfileBtn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+    <button class="edit-btn" id="editProfileBtn" aria-label="Edit Profile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+      </svg>
       Edit Profile
     </button>
   </header>
@@ -77,17 +34,27 @@
   <!-- Profile Hero -->
   <div class="profile-hero">
     <div class="avatar-wrap">
-      <img src="../assets/images/avatar-sayad.jpg" class="profile-avatar" alt="Md. Sayadul Islam"/>
-      <button class="avatar-cam" id="changePhotoBtn" aria-label="Change profile photo">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      <!-- Hidden file input for real photo upload -->
+      <input type="file" id="avatarFileInput" accept="image/*" style="display:none;" />
+      <img src="../assets/images/avatar-sayad.jpg" id="profileAvatarImg" class="profile-avatar" alt="Md. Sayadul Islam" title="Tap to change photo" />
+      <button class="avatar-cam" id="changePhotoBtn" aria-label="Change profile photo" title="Upload new photo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+          <circle cx="12" cy="13" r="4"/>
+        </svg>
       </button>
     </div>
-    <div class="profile-name">Md. Sayadul Islam</div>
-    <div class="profile-sub">Customer &bull; HomeEase Member since 2024</div>
+
+    <div class="profile-name" id="profileName">Md. Sayadul Islam</div>
+    <div class="profile-sub" id="profileSubtitle">Customer &bull; HomeEase Member since 2024</div>
+    
     <div class="verified-pill">
-      <svg viewBox="0 0 24 24" fill="currentColor" style="color:#15803D;"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+      </svg>
       NID Verified
     </div>
+
     <div class="stats-row">
       <div class="stat-col"><div class="stat-num">3</div><div class="stat-lbl">Active</div></div>
       <div class="stat-col"><div class="stat-num">15</div><div class="stat-lbl">Completed</div></div>
@@ -97,122 +64,178 @@
 
   <div class="profile-scroll">
 
-    <!-- Saved Addresses -->
+    <!-- 1. Saved Addresses (Interactive CRUD) -->
     <div class="profile-section">
       <div class="ps-title">Saved Addresses</div>
       <div class="ps-card">
-        <div class="ps-row" onclick="showToast('✏️ Edit Home address')">
-          <div class="ps-icon" style="background:#EEF0FF;">🏠</div>
-          <div class="ps-info"><div class="ps-label">Home</div><div class="ps-value">House 42, Road 11, Banani, Dhaka</div></div>
-          <div class="ps-right">
-            <button style="font-size:11px;color:var(--primary);background:none;border:none;cursor:pointer;font-weight:600;">Edit</button>
-            <button style="font-size:11px;color:#DC2626;background:none;border:none;cursor:pointer;font-weight:600;">Del</button>
-          </div>
+        <div id="addressContainer">
+          <!-- Populated by assets/js/profile.js -->
         </div>
-        <div class="ps-row" onclick="showToast('✏️ Edit Office address')">
-          <div class="ps-icon" style="background:#F0FDF4;">🏢</div>
-          <div class="ps-info"><div class="ps-label">Office</div><div class="ps-value">Level 4, Bashundhara City, Dhaka</div></div>
-          <div class="ps-right">
-            <button style="font-size:11px;color:var(--primary);background:none;border:none;cursor:pointer;font-weight:600;">Edit</button>
-            <button style="font-size:11px;color:#DC2626;background:none;border:none;cursor:pointer;font-weight:600;">Del</button>
-          </div>
-        </div>
-        <div class="add-row" onclick="showToast('➕ Add new address')">
+        <div class="add-row" onclick="handleAddAddress()">
           <div style="width:36px;height:36px;border-radius:10px;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--primary);font-weight:300;">+</div>
           <span class="add-row-text">Add New Address</span>
         </div>
       </div>
     </div>
 
-    <!-- Preferences -->
+    <!-- 2. Preferences (Interactive Modals) -->
     <div class="profile-section">
       <div class="ps-title">Preferences</div>
       <div class="ps-card">
-        <div class="ps-row" onclick="showToast('🌐 Change language')">
+        <!-- Language -->
+        <div class="ps-row" id="languageRow">
           <div class="ps-icon" style="background:#EEF0FF;">🌐</div>
-          <div class="ps-info"><div class="ps-label">Language</div><div class="ps-value">English (BD)</div></div>
-          <div class="ps-right ps-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="ps-info">
+            <div class="ps-label">Language</div>
+            <div class="ps-value" id="langDisplay">English (BD)</div>
+          </div>
+          <div class="ps-right ps-chevron">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
         </div>
+
+        <!-- Notifications Switch -->
         <div class="ps-row">
           <div class="ps-icon" style="background:#FFF3E0;">🔔</div>
-          <div class="ps-info"><div class="ps-label">Notifications</div><div class="ps-value">All enabled</div></div>
-          <div class="ps-toggle-track on" id="notifToggle" role="switch" aria-checked="true" tabindex="0"><div class="ps-toggle-thumb"></div></div>
+          <div class="ps-info">
+            <div class="ps-label">Notifications</div>
+            <div class="ps-value" id="notifDisplay">All enabled</div>
+          </div>
+          <div class="ps-toggle-track on" id="notifToggle" role="switch" aria-checked="true" tabindex="0">
+            <div class="ps-toggle-thumb"></div>
+          </div>
         </div>
-        <div class="ps-row" onclick="showToast('📍 Change default hub')">
+
+        <!-- Default Hub -->
+        <div class="ps-row" id="hubRow">
           <div class="ps-icon" style="background:#F0FDF4;">📍</div>
-          <div class="ps-info"><div class="ps-label">Default Hub</div><div class="ps-value">Dhaka North Hub</div></div>
-          <div class="ps-right ps-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="ps-info">
+            <div class="ps-label">Default Hub</div>
+            <div class="ps-value" id="hubDisplay">Dhaka North Hub</div>
+          </div>
+          <div class="ps-right ps-chevron">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
         </div>
-        <div class="ps-row" onclick="showToast('💱 Change currency')">
+
+        <!-- Currency -->
+        <div class="ps-row" id="currencyRow">
           <div class="ps-icon" style="background:#FFFBEB;">৳</div>
-          <div class="ps-info"><div class="ps-label">Currency</div><div class="ps-value">BDT (৳)</div></div>
-          <div class="ps-right ps-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="ps-info">
+            <div class="ps-label">Currency</div>
+            <div class="ps-value" id="currencyDisplay">BDT (৳)</div>
+          </div>
+          <div class="ps-right ps-chevron">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Account -->
+    <!-- 3. Account Settings -->
     <div class="profile-section">
       <div class="ps-title">Account</div>
       <div class="ps-card">
-        <div class="ps-row">
+        <!-- Mobile -->
+        <div class="ps-row" onclick="openModal('editProfileModal')">
           <div class="ps-icon" style="background:#EEF0FF;">📱</div>
-          <div class="ps-info"><div class="ps-label">Mobile Number</div><div class="ps-value">+880 1712-345678</div></div>
-          <div class="ps-right"><span class="ps-verified">✅ Verified</span></div>
+          <div class="ps-info">
+            <div class="ps-label">Mobile Number</div>
+            <div class="ps-value" id="phoneDisplay">+880 1712-345678</div>
+          </div>
+          <div class="ps-right">
+            <span class="ps-verified">✅ Verified</span>
+            <span class="ps-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+          </div>
         </div>
-        <div class="ps-row" onclick="showToast('📧 Add email address')">
+
+        <!-- Email -->
+        <div class="ps-row" onclick="openModal('editProfileModal')">
           <div class="ps-icon" style="background:#EEF0FF;">📧</div>
-          <div class="ps-info"><div class="ps-label">Email</div><div class="ps-value" style="color:var(--primary);">sayadul@email.com</div></div>
-          <div class="ps-right ps-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="ps-info">
+            <div class="ps-label">Email</div>
+            <div class="ps-value" id="emailDisplay" style="color:var(--primary);">sayadul@email.com</div>
+          </div>
+          <div class="ps-right ps-chevron">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
         </div>
-        <div class="ps-row" onclick="showToast('🔐 Change password')">
+
+        <!-- Change Password -->
+        <div class="ps-row" id="changePasswordRow">
           <div class="ps-icon" style="background:#EEF0FF;">🔑</div>
-          <div class="ps-info"><div class="ps-label">Change Password</div></div>
-          <div class="ps-right ps-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="ps-info">
+            <div class="ps-label">Change Password</div>
+            <div class="ps-value">Update your login security</div>
+          </div>
+          <div class="ps-right ps-chevron">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
         </div>
+
+        <!-- 2FA Switch -->
         <div class="ps-row">
           <div class="ps-icon" style="background:#EEF0FF;">🛡️</div>
-          <div class="ps-info"><div class="ps-label">Two-Factor Auth</div><div class="ps-value">Off</div></div>
-          <div class="ps-toggle-track" id="tfaToggle" role="switch" aria-checked="false" tabindex="0"><div class="ps-toggle-thumb"></div></div>
+          <div class="ps-info">
+            <div class="ps-label">Two-Factor Auth</div>
+            <div class="ps-value" id="tfaDisplay">Off</div>
+          </div>
+          <div class="ps-toggle-track" id="tfaToggle" role="switch" aria-checked="false" tabindex="0">
+            <div class="ps-toggle-thumb"></div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Payment Methods -->
+    <!-- 4. Payment Methods -->
     <div class="profile-section">
       <div class="ps-title">Payment Methods</div>
       <div class="ps-card">
-        <div class="ps-row">
-          <div class="payment-logo" style="background:#E91E8C;color:#fff;">bK</div>
-          <div class="ps-info"><div class="ps-label">bKash</div><div class="ps-value">•••• 5678</div></div>
-          <div class="ps-right"><span class="primary-tag">Primary</span></div>
+        <div id="paymentContainer">
+          <!-- Populated by assets/js/profile.js -->
         </div>
-        <div class="ps-row">
-          <div class="payment-logo" style="background:#FF6600;color:#fff;">N</div>
-          <div class="ps-info"><div class="ps-label">Nagad</div><div class="ps-value">•••• 1234</div></div>
-        </div>
-        <div class="add-row" onclick="showToast('➕ Link new payment method')">
+        <div class="add-row" id="addPaymentRow">
           <div style="width:32px;height:32px;border-radius:8px;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--primary);">+</div>
           <span class="add-row-text">Link New Payment Method</span>
         </div>
       </div>
     </div>
 
-    <!-- About -->
+    <!-- 5. About & Support -->
     <div class="profile-section">
       <div class="ps-title">About</div>
       <div class="ps-card">
-        <div class="ps-row" onclick="showToast('📜 Privacy Policy')"><div class="ps-icon" style="background:#EEF0FF;">📜</div><div class="ps-info"><div class="ps-label">Privacy Policy</div></div><div class="ps-right ps-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div></div>
-        <div class="ps-row" onclick="showToast('📋 Terms of Service')"><div class="ps-icon" style="background:#EEF0FF;">📋</div><div class="ps-info"><div class="ps-label">Terms of Service</div></div><div class="ps-right ps-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div></div>
-        <div class="ps-row" onclick="showToast('🎧 Opening Help & Support')"><div class="ps-icon" style="background:#EEF0FF;">🎧</div><div class="ps-info"><div class="ps-label">Help &amp; Support</div></div><div class="ps-right ps-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div></div>
-        <div class="ps-row" onclick="showToast('⭐ Thank you for rating HomeEase!')"><div class="ps-icon" style="background:#FFFBEB;">⭐</div><div class="ps-info"><div class="ps-label">Rate HomeEase App</div></div><div class="ps-right ps-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="ps-row" id="privacyRow">
+          <div class="ps-icon" style="background:#EEF0FF;">📜</div>
+          <div class="ps-info"><div class="ps-label">Privacy Policy</div></div>
+          <div class="ps-right ps-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="ps-row" id="termsRow">
+          <div class="ps-icon" style="background:#EEF0FF;">📋</div>
+          <div class="ps-info"><div class="ps-label">Terms of Service</div></div>
+          <div class="ps-right ps-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="ps-row" id="supportRow">
+          <div class="ps-icon" style="background:#EEF0FF;">🎧</div>
+          <div class="ps-info"><div class="ps-label">Help &amp; Support</div></div>
+          <div class="ps-right ps-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="ps-row" id="rateAppRow">
+          <div class="ps-icon" style="background:#FFFBEB;">⭐</div>
+          <div class="ps-info"><div class="ps-label">Rate HomeEase App</div></div>
+          <div class="ps-right ps-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
       </div>
     </div>
 
-    <!-- Logout -->
+    <!-- Log Out -->
     <div style="padding:0 18px 8px;">
       <button class="logout-btn" id="logoutBtn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
         Log Out
       </button>
     </div>
@@ -228,28 +251,228 @@
   </nav>
 </div>
 
+<!-- ══════════════════════════════════════════
+     INTERACTIVE BOTTOM SHEET MODALS
+══════════════════════════════════════════ -->
+
+<!-- 1. Edit Profile Modal -->
+<div class="modal-overlay" id="editProfileModal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-header-row">
+      <div class="modal-title">Edit Profile</div>
+      <button class="modal-close-btn" onclick="closeModal('editProfileModal')">✕</button>
+    </div>
+    <form id="editProfileForm">
+      <div class="modal-form-group">
+        <label class="modal-label">Full Name</label>
+        <input type="text" id="editNameInput" class="modal-input" required />
+      </div>
+      <div class="modal-form-group">
+        <label class="modal-label">Member Tagline / Subtitle</label>
+        <input type="text" id="editSubtitleInput" class="modal-input" />
+      </div>
+      <div class="modal-form-group">
+        <label class="modal-label">Mobile Number</label>
+        <input type="tel" id="editPhoneInput" class="modal-input" />
+      </div>
+      <div class="modal-form-group">
+        <label class="modal-label">Email Address</label>
+        <input type="email" id="editEmailInput" class="modal-input" />
+      </div>
+      <button type="submit" class="modal-btn-submit">Save Changes</button>
+    </form>
+  </div>
+</div>
+
+<!-- 2. Address Modal (Add / Edit) -->
+<div class="modal-overlay" id="addressModal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-header-row">
+      <div class="modal-title" id="addrModalTitle">Add Address</div>
+      <button class="modal-close-btn" onclick="closeModal('addressModal')">✕</button>
+    </div>
+    <form id="addressForm">
+      <div class="modal-form-group">
+        <label class="modal-label">Label (e.g. Home, Office, Studio)</label>
+        <input type="text" id="addrLabelInput" class="modal-input" required placeholder="Home" />
+      </div>
+      <div class="modal-form-group">
+        <label class="modal-label">Full Address Line</label>
+        <input type="text" id="addrLineInput" class="modal-input" required placeholder="House 42, Road 11, Banani, Dhaka" />
+      </div>
+      <button type="submit" class="modal-btn-submit">Save Address</button>
+    </form>
+  </div>
+</div>
+
+<!-- 3. Language Modal -->
+<div class="modal-overlay" id="languageModal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-header-row">
+      <div class="modal-title">Select Language</div>
+      <button class="modal-close-btn" onclick="closeModal('languageModal')">✕</button>
+    </div>
+    <div class="modal-select-item lang-opt" data-val="English (BD)">
+      <span class="modal-select-label">🇧🇩 English (Bangladesh)</span>
+      <div class="modal-select-check"></div>
+    </div>
+    <div class="modal-select-item lang-opt" data-val="বাংলা (Bengali)">
+      <span class="modal-select-label">🇧🇩 বাংলা (Bengali)</span>
+      <div class="modal-select-check"></div>
+    </div>
+    <div class="modal-select-item lang-opt" data-val="English (US)">
+      <span class="modal-select-label">🇺🇸 English (US)</span>
+      <div class="modal-select-check"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. Default Hub Modal -->
+<div class="modal-overlay" id="hubModal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-header-row">
+      <div class="modal-title">Select Default Hub</div>
+      <button class="modal-close-btn" onclick="closeModal('hubModal')">✕</button>
+    </div>
+    <div class="modal-select-item hub-opt" data-val="Dhaka North Hub">
+      <span class="modal-select-label">📍 Dhaka North Hub (Banani / Gulshan / Uttara)</span>
+      <div class="modal-select-check"></div>
+    </div>
+    <div class="modal-select-item hub-opt" data-val="Dhaka South Hub">
+      <span class="modal-select-label">📍 Dhaka South Hub (Dhanmondi / Motijheel)</span>
+      <div class="modal-select-check"></div>
+    </div>
+    <div class="modal-select-item hub-opt" data-val="Mirpur Central Hub">
+      <span class="modal-select-label">📍 Mirpur Central Hub</span>
+      <div class="modal-select-check"></div>
+    </div>
+    <div class="modal-select-item hub-opt" data-val="Chattogram Hub">
+      <span class="modal-select-label">📍 Chattogram Regional Hub</span>
+      <div class="modal-select-check"></div>
+    </div>
+    <div class="modal-select-item hub-opt" data-val="Sylhet City Hub">
+      <span class="modal-select-label">📍 Sylhet City Hub</span>
+      <div class="modal-select-check"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 5. Currency Modal -->
+<div class="modal-overlay" id="currencyModal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-header-row">
+      <div class="modal-title">Select Currency</div>
+      <button class="modal-close-btn" onclick="closeModal('currencyModal')">✕</button>
+    </div>
+    <div class="modal-select-item curr-opt" data-val="BDT (৳)">
+      <span class="modal-select-label">৳ BDT (Bangladeshi Taka)</span>
+      <div class="modal-select-check"></div>
+    </div>
+    <div class="modal-select-item curr-opt" data-val="USD ($)">
+      <span class="modal-select-label">$ USD (US Dollar)</span>
+      <div class="modal-select-check"></div>
+    </div>
+    <div class="modal-select-item curr-opt" data-val="EUR (€)">
+      <span class="modal-select-label">€ EUR (Euro)</span>
+      <div class="modal-select-check"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 6. Change Password Modal -->
+<div class="modal-overlay" id="passwordModal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-header-row">
+      <div class="modal-title">Change Password</div>
+      <button class="modal-close-btn" onclick="closeModal('passwordModal')">✕</button>
+    </div>
+    <form id="passwordForm">
+      <div class="modal-form-group">
+        <label class="modal-label">Current Password</label>
+        <input type="password" id="currPwInput" class="modal-input" placeholder="••••••••" required />
+      </div>
+      <div class="modal-form-group">
+        <label class="modal-label">New Password (Min 6 characters)</label>
+        <input type="password" id="newPwInput" class="modal-input" placeholder="••••••••" required minlength="6" />
+      </div>
+      <div class="modal-form-group">
+        <label class="modal-label">Confirm New Password</label>
+        <input type="password" id="confirmPwInput" class="modal-input" placeholder="••••••••" required minlength="6" />
+      </div>
+      <button type="submit" class="modal-btn-submit">Update Password</button>
+    </form>
+  </div>
+</div>
+
+<!-- 7. Add Payment Method Modal -->
+<div class="modal-overlay" id="paymentModal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-header-row">
+      <div class="modal-title">Link Payment Method</div>
+      <button class="modal-close-btn" onclick="closeModal('paymentModal')">✕</button>
+    </div>
+    <form id="paymentForm">
+      <div class="modal-form-group">
+        <label class="modal-label">Payment Gateway</label>
+        <select id="payMethodType" class="modal-input" style="background:#fff;">
+          <option value="bKash">bKash</option>
+          <option value="Nagad">Nagad</option>
+          <option value="Rocket">Rocket (DBBL)</option>
+          <option value="Visa">Visa Card</option>
+          <option value="MasterCard">MasterCard</option>
+        </select>
+      </div>
+      <div class="modal-form-group">
+        <label class="modal-label">Mobile Wallet / Card Number</label>
+        <input type="text" id="payAccountNum" class="modal-input" placeholder="017XXXXXXXX or 16-digit card" required />
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin: 10px 0;">
+        <input type="checkbox" id="payIsPrimary" style="width:18px; height:18px; accent-color:var(--primary);" />
+        <label for="payIsPrimary" style="font-size:13px; color:var(--text-dark); font-weight:600;">Set as Primary Payment Method</label>
+      </div>
+      <button type="submit" class="modal-btn-submit">Add Payment Method</button>
+    </form>
+  </div>
+</div>
+
+<!-- 8. Interactive App Rating Modal -->
+<div class="modal-overlay" id="rateModal">
+  <div class="modal-sheet" style="text-align:center;">
+    <div class="modal-handle"></div>
+    <div class="modal-header-row">
+      <div class="modal-title">Rate HomeEase</div>
+      <button class="modal-close-btn" onclick="closeModal('rateModal')">✕</button>
+    </div>
+    <p style="font-size:13px; color:var(--text-muted); margin-bottom:14px;">How is your experience with HomeEase?</p>
+    <div id="modalRateStars" style="font-size:32px; letter-spacing:6px; cursor:pointer; margin-bottom:18px;">
+      <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+    </div>
+    <textarea class="modal-input" placeholder="Write an optional review..." style="min-height:75px; resize:none; margin-bottom:14px;"></textarea>
+    <button type="button" id="submitRatingBtn" class="modal-btn-submit">Submit Rating</button>
+  </div>
+</div>
+
+<!-- 9. Info / Policy Modal -->
+<div class="modal-overlay" id="infoModal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-header-row">
+      <div class="modal-title" id="infoModalTitle">Information</div>
+      <button class="modal-close-btn" onclick="closeModal('infoModal')">✕</button>
+    </div>
+    <div id="infoModalContent"></div>
+  </div>
+</div>
+
 <div id="toast" class="toast" role="alert" aria-live="polite"></div>
-<script>
-let _tt;
-function showToast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");clearTimeout(_tt);_tt=setTimeout(()=>t.classList.remove("show"),3000);}
-document.addEventListener("DOMContentLoaded",()=>{
-  document.getElementById("editProfileBtn").addEventListener("click",()=>showToast("✏️ Edit profile mode"));
-  document.getElementById("changePhotoBtn").addEventListener("click",()=>showToast("📷 Change profile photo"));
-  // Toggles
-  ["notifToggle","tfaToggle"].forEach(id=>{
-    const el=document.getElementById(id);
-    el.addEventListener("click",()=>{
-      const on=el.classList.toggle("on");
-      el.setAttribute("aria-checked",on);
-      if(id==="notifToggle")showToast(on?"🔔 Notifications enabled":"🔕 Notifications disabled");
-      if(id==="tfaToggle")showToast(on?"🛡️ 2FA enabled":"Two-Factor Auth disabled");
-    });
-  });
-  document.getElementById("logoutBtn").addEventListener("click",()=>{
-    showToast("👋 Logged out successfully");
-    setTimeout(()=>window.location.href="login.html",1200);
-  });
-});
-</script>
+
+<script src="../assets/js/profile.js"></script>
 </body>
 </html>
