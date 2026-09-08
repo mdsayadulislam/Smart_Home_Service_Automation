@@ -4,6 +4,23 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  /* ── Dynamic User Greeting ── */
+  try {
+    const rawUser = localStorage.getItem("homeease_current_user");
+    if (rawUser) {
+      const user = JSON.parse(rawUser);
+      const greetingEl = document.getElementById("userGreetingName");
+      const avatarEl = document.getElementById("dashboardAvatarImg");
+      if (greetingEl && user.name) {
+        const firstName = user.name.split(" ")[0];
+        greetingEl.innerHTML = `Hi, ${firstName} <span aria-label="waving hand" role="img">👋</span>`;
+      }
+      if (avatarEl && user.avatar) {
+        avatarEl.src = user.avatar;
+      }
+    }
+  } catch (e) {}
+
   /* ── Live ETA countdown ── */
   let etaSeconds = 12 * 60; // 12 minutes in seconds
   const etaEl = document.getElementById("etaMinutes");

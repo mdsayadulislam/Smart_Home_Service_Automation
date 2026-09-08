@@ -43,8 +43,58 @@ function setStored(key, value) {
   }
 }
 
+// Load active logged in user profile dynamically
+function getCurrentUserProfile() {
+  let user = null;
+  try {
+    const raw = localStorage.getItem("homeease_current_user");
+    if (raw) user = JSON.parse(raw);
+  } catch (e) {}
+
+  if (user && user.name) {
+    const userKey = "homeease_profile_" + (user.phone || user.email || user.name);
+    const saved = getStored(userKey, null);
+    if (saved) return saved;
+
+    return {
+      name: user.name,
+      subtitle: user.role === "provider" ? "Service Provider • HomeEase Partner" : "Customer • HomeEase Member",
+      phone: user.phone || "+880 1712-345678",
+      email: user.email || `${user.phone || 'user'}@email.com`,
+      avatar: user.avatar || "../assets/images/avatar-sayad.jpg",
+      language: "English (BD)",
+      notificationsEnabled: true,
+      defaultHub: user.hub || "Dhaka North Hub",
+      currency: "BDT (৳)",
+      twoFactorAuth: false
+    };
+  }
+
+  return getStored("homeease_profile", DEFAULT_PROFILE);
+}
+
+function saveCurrentProfile(data) {
+  let user = null;
+  try {
+    const raw = localStorage.getItem("homeease_current_user");
+    if (raw) user = JSON.parse(raw);
+  } catch (e) {}
+
+  if (user) {
+    user.name = data.name;
+    user.phone = data.phone;
+    user.email = data.email;
+    if (data.avatar) user.avatar = data.avatar;
+    localStorage.setItem("homeease_current_user", JSON.stringify(user));
+
+    const userKey = "homeease_profile_" + (user.phone || user.email || user.name);
+    setStored(userKey, data);
+  }
+  setStored("homeease_profile", data);
+}
+
 // Global State
-let profileData = getStored("homeease_profile", DEFAULT_PROFILE);
+let profileData = getCurrentUserProfile();
 let addressList = getStored("homeease_addresses", DEFAULT_ADDRESSES);
 let paymentList = getStored("homeease_payments", DEFAULT_PAYMENTS);
 
@@ -292,7 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
     profileData.phone = newPhone || profileData.phone;
     profileData.email = newEmail || profileData.email;
 
-    setStored("homeease_profile", profileData);
+    saveCurrentProfile(profileData);
     renderProfile();
     closeModal("editProfileModal");
     showToast("✅ Profile successfully updated!");
@@ -546,6 +596,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // 13. Log Out
   document.getElementById("logoutBtn").addEventListener("click", () => {
     if (confirm("Are you sure you want to log out of HomeEase?")) {
+      try {
+        localStorage.removeItem("homeease_current_user");
+      } catch (e) {}
       showToast("👋 Logged out successfully");
       setTimeout(() => {
         window.location.href = "login.html";
