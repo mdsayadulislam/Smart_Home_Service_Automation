@@ -1,0 +1,258 @@
+/* ============================================================
+   HomeEase Pro — Partner Wallet & Earnings Styles
+   ============================================================ */
+
+.wallet-hero-card {
+  margin: 16px 18px 12px;
+  background: linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #3B2FC9 100%);
+  border-radius: 24px;
+  padding: 22px 20px;
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(59, 47, 201, 0.28);
+  position: relative;
+  overflow: hidden;
+}
+
+.wallet-hero-card::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.wallet-top-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wallet-lbl {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 700;
+}
+
+.wallet-badge-verified {
+  background: rgba(34, 197, 94, 0.2);
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  color: #86EFAC;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.wallet-balance-row {
+  margin: 14px 0 18px;
+}
+
+.wallet-balance-val {
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.wallet-btn-row {
+  display: flex;
+  gap: 10px;
+}
+
+.wallet-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none;
+  transition: all 0.2s;
+}
+
+.wallet-btn-withdraw {
+  background: #22C55E;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(34, 197, 94, 0.35);
+}
+
+.wallet-btn-withdraw:hover {
+  background: #16A34A;
+  transform: translateY(-1px);
+}
+
+.wallet-btn-bank {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.wallet-btn-bank:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* 3-col Stat Summary */
+.earnings-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  padding: 0 18px 14px;
+}
+
+.eg-col {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 10px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(59, 47, 201, 0.04);
+}
+
+.eg-num {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.eg-lbl {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  font-weight: 600;
+}
+
+/* Payout destination card */
+.payout-method-box {
+  margin: 0 18px 14px;
+  background: #FFF7ED;
+  border: 1.5px solid #FED7AA;
+  border-radius: 16px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pm-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pm-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #E91E8C;
+  color: #fff;
+  font-weight: 900;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pm-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.pm-account {
+  font-size: 12px;
+  color: #9A3412;
+  margin-top: 1px;
+}
+
+/* Transactions List */
+.trx-list {
+  padding: 0 18px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.trx-item {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 14px 16px;
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(59, 47, 201, 0.03);
+}
+
+.trx-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.trx-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.trx-icon.income {
+  background: #F0FDF4;
+  color: #16A34A;
+}
+
+.trx-icon.payout {
+  background: #FEF2F2;
+  color: #DC2626;
+}
+
+.trx-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.trx-sub {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.trx-right {
+  text-align: right;
+}
+
+.trx-amount {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.trx-amount.plus {
+  color: #16A34A;
+}
+
+.trx-amount.minus {
+  color: #DC2626;
+}
+
+.trx-date {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 2px;
+}
