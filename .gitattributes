@@ -7,9 +7,13 @@
 *.js    text eol=lf
 *.json  text eol=lf
 *.md    text eol=lf
+*.sql   text eol=lf
+*.py    text eol=lf
 
 # Binary files — no line-ending conversion
 *.png   binary
 *.jpg   binary
 *.ico   binary
 *.svg   binary
+*.db    binary
+

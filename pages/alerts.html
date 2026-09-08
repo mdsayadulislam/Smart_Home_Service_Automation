@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Alerts — HomeEase</title>
+  <link rel="stylesheet" href="../assets/css/global.css"/>
+  <link rel="stylesheet" href="../assets/css/dashboard.css"/>
+  <style>
+    .alerts-header{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 10px;background:var(--white);}
+    .ah-left{display:flex;align-items:center;gap:10px;}
+    .ah-title{font-size:20px;font-weight:800;color:var(--text-dark);}
+    .unread-badge{background:var(--primary);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;}
+    .mark-all{font-size:13px;font-weight:600;color:var(--primary);background:none;border:none;cursor:pointer;}
+    .notif-filter-tabs{display:flex;gap:8px;padding:8px 18px 12px;background:var(--white);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
+    .notif-filter-tabs::-webkit-scrollbar{display:none;}
+    .nf-tab{padding:7px 16px;border-radius:999px;border:1.5px solid var(--border);background:var(--white);font-size:13px;font-weight:600;color:var(--text-muted);cursor:pointer;white-space:nowrap;transition:all .2s;}
+    .nf-tab.active{background:var(--primary);border-color:var(--primary);color:#fff;}
+    .notif-list{padding:12px 18px;display:flex;flex-direction:column;gap:10px;}
+    .notif-card{background:var(--white);border-radius:14px;padding:14px;display:flex;gap:12px;position:relative;border:1.5px solid var(--border);transition:box-shadow .2s;overflow:hidden;}
+    .notif-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:4px 0 0 4px;}
+    .notif-card.unread::before{background:var(--primary);}
+    .notif-card.orange::before{background:#F97316;}
+    .notif-card.green-l::before{background:var(--green);}
+    .notif-card.blue-l::before{background:#3B82F6;}
+    .notif-card.yellow-l::before{background:#EAB308;}
+    .notif-card:hover{box-shadow:0 4px 16px rgba(59,47,201,.08);}
+    .notif-card.unread{background:#FAFBFF;}
+    .notif-icon-wrap{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;}
+    .notif-body{flex:1;min-width:0;}
+    .notif-title{font-size:13.5px;font-weight:700;color:var(--text-dark);line-height:1.3;}
+    .notif-msg{font-size:12px;color:var(--text-muted);margin-top:3px;line-height:1.4;}
+    .notif-time{font-size:11px;color:var(--text-light);margin-top:5px;}
+    .notif-dot{width:8px;height:8px;border-radius:50%;background:var(--primary);flex-shrink:0;margin-top:4px;}
+    .stars-inline{display:flex;gap:2px;margin-top:6px;}
+    .stars-inline span{font-size:16px;cursor:pointer;transition:transform .1s;}
+    .stars-inline span:hover{transform:scale(1.2);}
+    .notif-card.read .notif-title{color:var(--text-muted);font-weight:600;}
+    .notif-card.read{background:var(--white);}
+    .notif-card.read::before{background:transparent;}
+  </style>
+</head>
+<body class="dashboard-page">
+<div class="app-shell">
+
+  <!-- Top bar -->
+  <header class="top-bar">
+    <div class="brand">
+      <div class="brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg></div>
+      HomeEase
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button class="mark-all" id="markAllBtn">Mark all read</button>
+      <a href="profile.html" class="avatar-btn"><img src="../assets/images/avatar-sayad.jpg" alt="Sayad" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"/></a>
+    </div>
+  </header>
+
+  <!-- Alerts Header -->
+  <div class="alerts-header">
+    <div class="ah-left">
+      <div class="ah-title">Notifications</div>
+      <span class="unread-badge" id="unreadBadge">4 unread</span>
+    </div>
+  </div>
+
+  <!-- Filter Tabs -->
+  <div class="notif-filter-tabs" role="tablist">
+    <button class="nf-tab active" data-cat="all" role="tab">All</button>
+    <button class="nf-tab" data-cat="service" role="tab">Service</button>
+    <button class="nf-tab" data-cat="payment" role="tab">Payments</button>
+    <button class="nf-tab" data-cat="system" role="tab">System</button>
+  </div>
+
+  <div class="page-scroll" style="padding-bottom:80px;">
+    <div class="notif-list" id="notifList">
+
+      <!-- 1: UNREAD — On the way -->
+      <div class="notif-card unread orange" data-cat="service">
+        <div class="notif-icon-wrap" style="background:#FFF3E0;">🏍️</div>
+        <div class="notif-body">
+          <div class="notif-title">Rahim Uddin is 14 mins away</div>
+          <div class="notif-msg">Your AC Filter Servicing technician is en-route to your location.</div>
+          <div class="notif-time">2 mins ago</div>
+        </div>
+        <div class="notif-dot"></div>
+      </div>
+
+      <!-- 2: UNREAD — Booking confirmed -->
+      <div class="notif-card unread green-l" data-cat="service">
+        <div class="notif-icon-wrap" style="background:#F0FDF4;">✅</div>
+        <div class="notif-body">
+          <div class="notif-title">Booking Confirmed #HE-8824</div>
+          <div class="notif-msg">Your AC Deep Servicing is confirmed for Today 2:15 PM.</div>
+          <div class="notif-time">15 mins ago</div>
+        </div>
+        <div class="notif-dot"></div>
+      </div>
+
+      <!-- 3: UNREAD — Payment -->
+      <div class="notif-card unread blue-l" data-cat="payment">
+        <div class="notif-icon-wrap" style="background:#EFF6FF;">💳</div>
+        <div class="notif-body">
+          <div class="notif-title">Payment Received ৳2,850</div>
+          <div class="notif-msg">AC Deep Servicing payment processed via bKash.</div>
+          <div class="notif-time">1 hr ago</div>
+        </div>
+        <div class="notif-dot"></div>
+      </div>
+
+      <!-- 4: UNREAD — Rate -->
+      <div class="notif-card unread yellow-l" data-cat="service">
+        <div class="notif-icon-wrap" style="background:#FFFBEB;">⭐</div>
+        <div class="notif-body">
+          <div class="notif-title">Rate Your Experience</div>
+          <div class="notif-msg">How was your service by Kazi Rahim? Tap to rate.</div>
+          <div class="stars-inline" id="ratingStars" aria-label="Rate Kazi Rahim">
+            <span role="button" aria-label="1 star" tabindex="0">☆</span>
+            <span role="button" aria-label="2 stars" tabindex="0">☆</span>
+            <span role="button" aria-label="3 stars" tabindex="0">☆</span>
+            <span role="button" aria-label="4 stars" tabindex="0">☆</span>
+            <span role="button" aria-label="5 stars" tabindex="0">☆</span>
+          </div>
+          <div class="notif-time">2 hrs ago</div>
+        </div>
+        <div class="notif-dot"></div>
+      </div>
+
+      <!-- 5: READ -->
+      <div class="notif-card read" data-cat="service">
+        <div class="notif-icon-wrap" style="background:#F1F5F9;">🔧</div>
+        <div class="notif-body">
+          <div class="notif-title">Service Completed</div>
+          <div class="notif-msg">AC Deep Servicing by Kazi Rahim marked complete. OTP verified.</div>
+          <div class="notif-time">Yesterday 3:45 PM</div>
+        </div>
+      </div>
+
+      <!-- 6: READ -->
+      <div class="notif-card read" data-cat="service">
+        <div class="notif-icon-wrap" style="background:#F1F5F9;">📢</div>
+        <div class="notif-body">
+          <div class="notif-title">Special Offer!</div>
+          <div class="notif-msg">20% off AC Servicing this week. Book now before Sep 15.</div>
+          <div class="notif-time">Yesterday 10:00 AM</div>
+        </div>
+      </div>
+
+      <!-- 7: READ -->
+      <div class="notif-card read" data-cat="service">
+        <div class="notif-icon-wrap" style="background:#F1F5F9;">💬</div>
+        <div class="notif-body">
+          <div class="notif-title">New Message</div>
+          <div class="notif-msg">Kazi Rahim: "I will arrive with R410A gas and tools."</div>
+          <div class="notif-time">2 days ago</div>
+        </div>
+      </div>
+
+      <!-- 8: READ -->
+      <div class="notif-card read" data-cat="system">
+        <div class="notif-icon-wrap" style="background:#F0FDF4;">✅</div>
+        <div class="notif-body">
+          <div class="notif-title">Account Verified</div>
+          <div class="notif-msg">Your HomeEase account is fully verified. BD Secure active.</div>
+          <div class="notif-time">3 days ago</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="dashboard.html" class="nav-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span class="nav-label">Home</span></a>
+    <a href="requests.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span class="nav-label">Requests</span></a>
+    <a href="alerts.html" class="nav-item active" aria-current="page"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="nav-label">Alerts</span></a>
+    <a href="profile.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="nav-label">Profile</span></a>
+  </nav>
+</div>
+
+<div id="toast" class="toast" role="alert" aria-live="polite"></div>
+<script>
+let _tt;
+function showToast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");clearTimeout(_tt);_tt=setTimeout(()=>t.classList.remove("show"),3000);}
+document.addEventListener("DOMContentLoaded",()=>{
+  // Filter tabs
+  document.querySelectorAll(".nf-tab").forEach(tab=>{
+    tab.addEventListener("click",()=>{
+      document.querySelectorAll(".nf-tab").forEach(t=>t.classList.remove("active"));
+      tab.classList.add("active");
+      const cat=tab.dataset.cat;
+      document.querySelectorAll(".notif-card").forEach(c=>{
+        c.style.display=(cat==="all"||c.dataset.cat===cat)?"flex":"none";
+      });
+    });
+  });
+
+  // Mark all read
+  document.getElementById("markAllBtn").addEventListener("click",()=>{
+    document.querySelectorAll(".notif-card.unread").forEach(c=>{
+      c.classList.remove("unread","orange","green-l","blue-l","yellow-l");
+      c.classList.add("read");
+      c.querySelector(".notif-dot")?.remove();
+    });
+    document.getElementById("unreadBadge").textContent="0 unread";
+    document.getElementById("unreadBadge").style.background="#9CA3AF";
+    showToast("✅ All notifications marked as read");
+  });
+
+  // Star rating
+  const stars=document.querySelectorAll("#ratingStars span");
+  stars.forEach((s,i)=>{
+    s.addEventListener("click",()=>{
+      stars.forEach((st,j)=>st.textContent=j<=i?"⭐":"☆");
+      showToast(`⭐ Rated Kazi Rahim ${i+1} star${i+1>1?"s":""}! Thank you.`);
+    });
+    s.addEventListener("mouseenter",()=>stars.forEach((st,j)=>st.textContent=j<=i?"⭐":"☆"));
+    s.addEventListener("mouseleave",()=>{const filled=Array.from(stars).findIndex(st=>st.textContent==="☆");stars.forEach((st,j)=>st.textContent=filled===-1||j<filled?"⭐":"☆");});
+  });
+});
+</script>
+</body>
+</html>

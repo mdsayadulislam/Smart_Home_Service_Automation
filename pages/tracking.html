@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Live Tracking — HomeEase</title>
+  <link rel="stylesheet" href="../assets/css/global.css"/>
+  <link rel="stylesheet" href="../assets/css/dashboard.css"/>
+  <link rel="stylesheet" href="../assets/css/tracking.css"/>
+</head>
+<body class="dashboard-page">
+<div class="app-shell">
+
+  <!-- Header -->
+  <header class="track-header">
+    <button class="back-btn" onclick="history.back()" aria-label="Go back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <span class="page-title">Technician Live Tracking</span>
+    <img src="../assets/images/avatar-sayad.jpg" class="header-avatar" alt="Sayad"/>
+  </header>
+
+  <div class="page-scroll" style="padding-bottom:110px;">
+
+    <!-- Order Header -->
+    <div class="order-header">
+      <div class="order-top-row">
+        <span class="order-id-badge">#HE-8824-DH</span>
+        <span class="live-badge"><span class="live-dot"></span>LIVE UPDATES</span>
+      </div>
+      <div class="order-title">AC Deep Servicing &amp; Gas Refill</div>
+      <div class="order-sub">Master Bedroom 1.5 Ton Split AC &bull; Gulshan-2, Dhaka</div>
+    </div>
+
+    <!-- Arrival Card -->
+    <div class="arrival-card" role="status" aria-live="polite">
+      <div class="arrival-left">
+        <div class="nav-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22l10-5 10 5L12 2z"/></svg>
+        </div>
+        <div class="arrival-info">
+          <div class="arrival-label">Technician Arriving in</div>
+          <div class="arrival-time" id="arrivalTimer">14:00</div>
+        </div>
+      </div>
+      <div class="arrival-right">
+        <div class="distance-val">2.4 km</div>
+        <div class="distance-lbl">away</div>
+      </div>
+    </div>
+
+    <!-- Map -->
+    <div class="map-area" aria-label="Live map showing technician route">
+      <div class="road-h"></div>
+      <div class="road-v"></div>
+      <div class="road-diagonal"></div>
+      <!-- Route line -->
+      <div class="route-line"></div>
+      <!-- City label -->
+      <div class="map-city-label">Dhaka</div>
+      <!-- Your Home -->
+      <div class="your-home-pin" aria-hidden="true">
+        <span class="your-home-label">Your Home</span>
+        <svg viewBox="0 0 24 24" fill="#3B2FC9"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/></svg>
+      </div>
+      <!-- Rider -->
+      <div class="rider-pin" aria-hidden="true" style="display:flex;flex-direction:column;align-items:center;">
+        <span class="rider-label">Rahim ●</span>
+        <div class="rider-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 5.5C16.5 5 15.5 4.5 14 4.5c-2 0-3.5.5-5 2L8 7l-1 1 1 1.5L9.5 11 11 9.5c.5-.5 1-.5 1.5 0l3 3c.5.5.5 1 0 1.5L14 15.5l1.5 1.5 1.5-1.5c1-1 1-2.5 0-3.5l-1-1L17 9.5c.5-.5 1-1 1.5-1S20 9 20 9.5V11c0 .5.5 1 1 1s1-.5 1-1V9.5c0-2-2-4-4.5-4z"/><circle cx="10" cy="6" r="1.5"/></svg>
+        </div>
+      </div>
+      <div class="road-info">Kamal Ataturk Ave &bull; Smooth Traffic</div>
+      <div class="gps-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3"/></svg></div>
+    </div>
+
+    <!-- Progress Track -->
+    <div class="progress-section">
+      <div class="progress-section-title">Live Progress Track</div>
+      <div class="timeline" role="list">
+
+        <!-- Step 1: Done -->
+        <div class="timeline-item" role="listitem">
+          <div class="tl-left">
+            <div class="tl-icon done" aria-label="Completed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="tl-line done"></div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-top"><span class="tl-title">Service Requested</span><span class="tl-time">02:15 PM</span></div>
+            <div class="tl-sub">Confirmed via HomeEase automated booking</div>
+          </div>
+        </div>
+
+        <!-- Step 2: Done -->
+        <div class="timeline-item" role="listitem">
+          <div class="tl-left">
+            <div class="tl-icon done" aria-label="Completed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="tl-line done"></div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-top"><span class="tl-title">Technician Accepted</span><span class="tl-time">02:22 PM</span></div>
+            <div class="tl-sub">Kazi Rahim assigned &amp; dispatched tool set</div>
+          </div>
+        </div>
+
+        <!-- Step 3: Active -->
+        <div class="timeline-item" role="listitem">
+          <div class="tl-left">
+            <div class="tl-icon active" aria-label="In progress">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 5.5C16.5 5 15.5 4.5 14 4.5c-2 0-3.5.5-5 2L8 7l-1 1 1 1.5L9.5 11 11 9.5c.5-.5 1-.5 1.5 0l3 3c.5.5.5 1 0 1.5L14 15.5l1.5 1.5 1.5-1.5c1-1 1-2.5 0-3.5l-1-1L17 9.5c.5-.5 1-1 1.5-1S20 9 20 9.5V11c0 .5.5 1 1 1s1-.5 1-1V9.5c0-2-2-4-4.5-4z"/></svg>
+            </div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-top"><span class="tl-title">On the Way</span></div>
+            <div class="tl-now-badge"><span class="tl-now-dot"></span>Now</div>
+            <div class="tl-active-card">
+              <div class="tl-active-text">En-route on Hero Honda Splendor (Dhaka Metro-Ha 42-9912)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Pending -->
+        <div class="timeline-item" role="listitem">
+          <div class="tl-left">
+            <div class="tl-icon pending" aria-label="Pending"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-top"><span class="tl-title">Service In Progress</span><span class="tl-time">Est. 02:45 PM</span></div>
+            <div class="tl-sub">Pressure cleaning, condenser flush &amp; R410A gas refill</div>
+          </div>
+        </div>
+
+        <!-- Step 5: Pending -->
+        <div class="timeline-item" role="listitem">
+          <div class="tl-left">
+            <div class="tl-icon pending" aria-label="Pending"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/></svg></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-top"><span class="tl-title">Completed &amp; Signed</span><span class="tl-time">Est. 03:45 PM</span></div>
+            <div class="tl-sub">Digital warranty card handover &amp; ৳2,850 settlement</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Technician Card -->
+    <div class="tech-card">
+      <div class="tech-header">
+        <span class="tech-header-label">Assigned Technician</span>
+        <span class="verified-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>Verified Pro</span>
+      </div>
+      <div class="tech-info-row">
+        <div class="tech-avatar" aria-hidden="true">KR</div>
+        <div style="flex:1;">
+          <div class="tech-name">Kazi Rahim</div>
+          <div class="tech-role">Master HVAC Expert...</div>
+          <div class="tech-hub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+            Dhaka North Hub (4.8 yrs exp)
+          </div>
+          <div class="rating-badge">⭐ 4.9</div>
+        </div>
+        <div class="tech-actions">
+          <button class="tech-action-btn call" id="callTech" aria-label="Call technician">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.91-.86a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </button>
+          <button class="tech-action-btn chat" id="chatTech" aria-label="Chat with technician">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- OTP -->
+    <div class="otp-card">
+      <div class="otp-left">
+        <div class="otp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div>
+          <div class="otp-label">Service Verification Pin</div>
+          <div class="otp-sub">Share upon technician arrival</div>
+        </div>
+      </div>
+      <div class="otp-num" id="otpDisplay" title="Tap to copy">OTP: <strong>4829</strong></div>
+    </div>
+
+  </div><!-- /page-scroll -->
+
+  <!-- Bottom Actions -->
+  <div class="action-bar">
+    <div class="action-btns">
+      <button class="action-btn safety" id="safetyBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Safety Desk
+      </button>
+      <button class="action-btn cancel" id="cancelBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        Cancel Service
+      </button>
+    </div>
+    <p class="hotline-text">Need instant assistance? HomeEase 24/7 Hotline: <strong>16420</strong></p>
+  </div>
+
+</div>
+<div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+<script>
+let _tt;
+function showToast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");clearTimeout(_tt);_tt=setTimeout(()=>t.classList.remove("show"),3000);}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  // Countdown timer: 14 minutes
+  let totalSecs=14*60;
+  const timerEl=document.getElementById("arrivalTimer");
+  const interval=setInterval(()=>{
+    if(totalSecs<=0){clearInterval(interval);timerEl.textContent="Arrived!";timerEl.style.color="#15803D";showToast("🏠 Kazi Rahim has arrived at your location!");return;}
+    totalSecs--;
+    const m=Math.floor(totalSecs/60).toString().padStart(2,"0");
+    const s=(totalSecs%60).toString().padStart(2,"0");
+    timerEl.textContent=`${m}:${s}`;
+  },1000);
+
+  // OTP copy
+  document.getElementById("otpDisplay").addEventListener("click",()=>{
+    navigator.clipboard?.writeText("4829").catch(()=>{});
+    showToast("📋 OTP 4829 copied to clipboard!");
+  });
+
+  // Actions
+  document.getElementById("callTech").addEventListener("click",()=>showToast("📞 Calling Kazi Rahim…"));
+  document.getElementById("chatTech").addEventListener("click",()=>showToast("💬 Opening chat with Kazi Rahim…"));
+  document.getElementById("safetyBtn").addEventListener("click",()=>showToast("🛡️ Connecting to HomeEase Safety Desk…"));
+  document.getElementById("cancelBtn").addEventListener("click",()=>{
+    if(confirm("Are you sure you want to cancel this service? Cancellation fees may apply.")){
+      showToast("❌ Service cancellation request submitted.");
+      setTimeout(()=>window.location.href="requests.html",1500);
+    }
+  });
+});
+</script>
+</body>
+</html>

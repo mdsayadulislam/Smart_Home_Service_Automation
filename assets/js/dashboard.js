@@ -53,8 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ── Service card clicks ── */
   document.querySelectorAll(".service-card").forEach(card => {
     card.addEventListener("click", () => {
-      const name = card.querySelector(".service-name").textContent;
+      const name = card.querySelector(".service-name").textContent.trim();
       showToast(`Opening ${name}…`);
+      setTimeout(() => { window.location.href = "book-service.html"; }, 600);
     });
   });
 

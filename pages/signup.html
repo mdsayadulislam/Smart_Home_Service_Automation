@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login — Smart Home BD</title>
+  <title>Sign Up — HomeEase Smart BD</title>
   <link rel="stylesheet" href="../assets/css/global.css" />
   <link rel="stylesheet" href="../assets/css/login.css" />
+  <link rel="stylesheet" href="../assets/css/signup.css" />
 
   <style>
     /* Shake animation for invalid inputs */
@@ -18,7 +19,7 @@
     }
     .shake { animation: shake 0.4s ease; }
 
-    /* Spinner for login button */
+    /* Spinner for submit button */
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
@@ -30,7 +31,7 @@
   <!-- ════════════════════════════════════
        Phone / Card Shell
   ════════════════════════════════════ -->
-  <main class="phone-card" role="main" aria-label="Login form">
+  <main class="phone-card signup-card" role="main" aria-label="Sign up form">
 
     <!-- Role Toggle -->
     <nav class="role-toggle" aria-label="Account type">
@@ -54,11 +55,9 @@
     <div class="hero-logo" aria-hidden="true">
       <div class="logo-ring-outer">
         <div class="logo-ring-inner">
-          <!-- Smart home icon -->
           <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
             <path d="M9 21V12h6v9"/>
-            <!-- Orange dot inside house: decorative circle -->
             <circle cx="12" cy="10" r="1.5" fill="#FF6B2C" stroke="none"/>
           </svg>
         </div>
@@ -67,29 +66,40 @@
     </div>
 
     <!-- Headings -->
-    <h1 class="welcome-title">Welcome Back</h1>
+    <h1 class="welcome-title">Create Account</h1>
     <p class="welcome-subtitle">
-      Log in to manage your smart home services in<br>
-      Dhaka &amp; across BD
+      Join HomeEase &mdash; trusted smart home services across BD
     </p>
 
-    <!-- ── Login Form ── -->
-    <form id="loginForm" class="form-section" novalidate>
+    <!-- ── Sign Up Form ── -->
+    <form id="signupForm" class="form-section" novalidate>
 
-      <!-- Mobile / Email Field -->
+      <!-- Full Name Field -->
       <div class="field-group">
-        <div class="field-label-row">
-          <label class="field-label" for="mobileInput">Mobile or Email</label>
-          <span class="bd-secure" aria-label="BD Secure">
-            <!-- Shield check icon -->
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C17.5 22.15 21 17.25 21 12V6l-9-4z" opacity=".2"/>
-              <path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C17.5 22.15 21 17.25 21 12V6l-9-4zm-1.5 12.5L7 11l1.4-1.4 2.1 2.1 4.6-4.6L16.5 8.5l-6 6z"/>
+        <label class="field-label" for="fullNameInput">Full Name</label>
+        <div class="input-wrap" id="fullNameWrap">
+          <span class="input-icon" aria-hidden="true">
+            <!-- Person icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
             </svg>
-            BD Secure
           </span>
+          <input
+            type="text"
+            id="fullNameInput"
+            name="fullName"
+            placeholder="Your full name"
+            autocomplete="name"
+            aria-label="Full name"
+            required
+          />
         </div>
+      </div>
 
+      <!-- Mobile Number Field -->
+      <div class="field-group">
+        <label class="field-label" for="mobileInput">Mobile Number</label>
         <div class="input-wrap" id="mobileWrap">
           <span class="input-icon" aria-hidden="true">
             <!-- Phone icon -->
@@ -97,14 +107,42 @@
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.91-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
             </svg>
           </span>
+          <span class="phone-prefix" aria-label="+880 country code">+880</span>
           <input
-            type="text"
+            type="tel"
             id="mobileInput"
             name="mobile"
-            placeholder="+880 17XX-XXXXXX or email"
-            autocomplete="tel username"
+            placeholder="17XX-XXXXXX"
+            autocomplete="tel"
             inputmode="tel"
-            aria-label="Mobile number or email address"
+            aria-label="Mobile number without country code"
+            required
+          />
+        </div>
+      </div>
+
+      <!-- Email Field (Optional) -->
+      <div class="field-group">
+        <div class="field-label-row">
+          <label class="field-label" for="emailInput">Email Address</label>
+          <span class="optional-tag">Optional</span>
+        </div>
+        <div class="input-wrap" id="emailWrap">
+          <span class="input-icon" aria-hidden="true">
+            <!-- Mail icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </span>
+          <input
+            type="email"
+            id="emailInput"
+            name="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            inputmode="email"
+            aria-label="Email address (optional)"
           />
         </div>
       </div>
@@ -112,7 +150,6 @@
       <!-- Password Field -->
       <div class="field-group">
         <label class="field-label" for="passwordInput">Password</label>
-
         <div class="input-wrap" id="passwordWrap">
           <span class="input-icon" aria-hidden="true">
             <!-- Lock icon -->
@@ -125,18 +162,56 @@
             type="password"
             id="passwordInput"
             name="password"
-            placeholder="Enter your password"
-            autocomplete="current-password"
+            placeholder="Create a strong password"
+            autocomplete="new-password"
             aria-label="Password"
+            required
           />
           <button type="button" class="input-action" id="passwordToggle" aria-label="Toggle password visibility">
-            <!-- Eye open -->
-            <svg id="eyeOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+            <svg id="eyeOpen1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
               <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
               <circle cx="12" cy="12" r="3"/>
             </svg>
-            <!-- Eye closed (default — password hidden) -->
-            <svg id="eyeClosed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg id="eyeClosed1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+              <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+              <line x1="1" y1="1" x2="23" y2="23"/>
+            </svg>
+          </button>
+        </div>
+        <!-- Password Strength Indicator -->
+        <div class="strength-bar-wrap" id="strengthBarWrap" aria-hidden="true">
+          <div class="strength-bar" id="strengthBar"></div>
+        </div>
+        <span class="strength-label" id="strengthLabel" aria-live="polite"></span>
+      </div>
+
+      <!-- Confirm Password Field -->
+      <div class="field-group">
+        <label class="field-label" for="confirmPasswordInput">Confirm Password</label>
+        <div class="input-wrap" id="confirmWrap">
+          <span class="input-icon" aria-hidden="true">
+            <!-- Lock icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </span>
+          <input
+            type="password"
+            id="confirmPasswordInput"
+            name="confirmPassword"
+            placeholder="Repeat your password"
+            autocomplete="new-password"
+            aria-label="Confirm password"
+            required
+          />
+          <button type="button" class="input-action" id="confirmToggle" aria-label="Toggle confirm password visibility">
+            <svg id="eyeOpen2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <svg id="eyeClosed2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
               <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
               <line x1="1" y1="1" x2="23" y2="23"/>
@@ -145,19 +220,27 @@
         </div>
       </div>
 
-      <!-- Remember Me + Forgot Password -->
-      <div class="options-row">
-        <label class="toggle-wrap" aria-label="Remember me">
-          <input type="checkbox" id="rememberMe" name="remember" />
-          <span class="toggle-track"><span class="toggle-thumb"></span></span>
-          <span class="toggle-label">Remember me</span>
+      <!-- Terms & Conditions Checkbox -->
+      <div class="terms-row" id="termsWrap">
+        <label class="terms-label">
+          <input type="checkbox" id="termsCheck" name="terms" aria-required="true" />
+          <span class="terms-check-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </span>
+          <span class="terms-text">
+            I agree to the
+            <a href="#" class="terms-link">Terms of Service</a>
+            and
+            <a href="#" class="terms-link">Privacy Policy</a>
+          </span>
         </label>
-        <a href="#" class="forgot-link" id="forgotLink">Forgot Password?</a>
       </div>
 
-      <!-- Login Button -->
-      <button type="submit" class="login-btn" id="loginBtn">
-        Log In
+      <!-- Create Account Button -->
+      <button type="submit" class="login-btn" id="signupBtn">
+        Create Account
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="5" y1="12" x2="19" y2="12"/>
           <polyline points="12 5 19 12 12 19"/>
@@ -165,13 +248,13 @@
       </button>
 
       <!-- Divider -->
-      <div class="divider" role="separator"><span>or continue with</span></div>
+      <div class="divider" role="separator"><span>or sign up with</span></div>
 
-      <!-- Social Login -->
-      <div class="social-row" role="group" aria-label="Social login options">
+      <!-- Social Sign-Up -->
+      <div class="social-row" role="group" aria-label="Social sign-up options">
 
         <!-- Google -->
-        <button type="button" class="social-btn" data-provider="google" aria-label="Continue with Google">
+        <button type="button" class="social-btn" data-provider="google" aria-label="Sign up with Google">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
             <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -181,14 +264,14 @@
         </button>
 
         <!-- SMS / OTP -->
-        <button type="button" class="social-btn" data-provider="sms" aria-label="Continue with SMS OTP" style="color:#3B2FC9;">
+        <button type="button" class="social-btn" data-provider="sms" aria-label="Sign up with SMS OTP" style="color:#3B2FC9;">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/>
           </svg>
         </button>
 
         <!-- Facebook -->
-        <button type="button" class="social-btn" data-provider="facebook" aria-label="Continue with Facebook">
+        <button type="button" class="social-btn" data-provider="facebook" aria-label="Sign up with Facebook">
           <svg viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true">
             <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
           </svg>
@@ -196,19 +279,9 @@
 
       </div>
 
-      <!-- Location Info -->
-      <p class="location-info">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/>
-          <circle cx="12" cy="10" r="3"/>
-        </svg>
-        Dhaka &bull; Chattogram &bull; Sylhet (&taka; BDT)
-      </p>
-
-      <!-- Sign Up Footer -->
+      <!-- Footer — Log In link -->
       <p class="signup-footer">
-        Don&rsquo;t have an account?&nbsp;
-        <a href="signup.html" style="color:var(--primary);font-weight:700;text-decoration:none;">Sign Up</a>
+        Already have an account?&nbsp;<a href="login.html">Log In</a>
       </p>
 
     </form>
@@ -217,7 +290,6 @@
   <!-- Toast Notification -->
   <div id="toast" class="toast" role="alert" aria-live="polite"></div>
 
-  <script src="../assets/js/login.js"></script>
+  <script src="../assets/js/signup.js"></script>
 </body>
 </html>
-

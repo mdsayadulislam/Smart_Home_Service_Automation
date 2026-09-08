@@ -1,0 +1,171 @@
+/* =============================================
+   Signup Page — Component Overrides & Additions
+   (Layered on top of login.css & global.css)
+   ============================================= */
+
+/* ── Extend phone-card for more content ── */
+.signup-card {
+  padding-bottom: 36px;
+}
+
+/* ── Compact hero logo margin on signup ── */
+.signup-card .hero-logo {
+  margin: 24px 0 16px;
+}
+
+/* ── Optional tag next to label ── */
+.optional-tag {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-light);
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 2px 9px;
+  letter-spacing: 0.3px;
+}
+
+/* ── Phone prefix badge inside input ── */
+.phone-prefix {
+  flex-shrink: 0;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--primary-light);
+  border-right: 1.5px solid var(--border);
+  padding: 0 10px;
+  white-space: nowrap;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+/* ── Password Strength Bar ── */
+.strength-bar-wrap {
+  height: 4px;
+  background: var(--border);
+  border-radius: var(--radius-pill);
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.strength-bar {
+  height: 100%;
+  width: 0%;
+  border-radius: var(--radius-pill);
+  transition: width 0.35s ease, background 0.35s ease;
+}
+
+.strength-bar.weak   { background: #EF4444; width: 33%; }
+.strength-bar.fair   { background: #F59E0B; width: 66%; }
+.strength-bar.strong { background: var(--green); width: 100%; }
+
+.strength-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  margin-top: 4px;
+  display: block;
+  min-height: 16px;
+}
+
+.strength-label.weak   { color: #EF4444; }
+.strength-label.fair   { color: #F59E0B; }
+.strength-label.strong { color: var(--green); }
+
+/* ── Terms & Conditions Row ── */
+.terms-row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.terms-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1.5;
+}
+
+/* Hide native checkbox */
+.terms-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Custom checkbox box */
+.terms-check-box {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 2px solid var(--border);
+  background: var(--input-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s;
+  margin-top: 1px;
+}
+
+.terms-check-box svg {
+  width: 11px;
+  height: 11px;
+  color: var(--white);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.terms-label input[type="checkbox"]:checked ~ .terms-check-box {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.terms-label input[type="checkbox"]:checked ~ .terms-check-box svg {
+  opacity: 1;
+}
+
+/* Terms text */
+.terms-text {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.terms-link {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.terms-link:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+}
+
+/* Terms error state */
+.terms-row.error .terms-check-box {
+  border-color: #EF4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
+/* ── Input error state ── */
+.input-wrap.error {
+  border-color: #EF4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12) !important;
+}
+
+/* ── Responsive tweaks ── */
+@media (max-width: 360px) {
+  .signup-card {
+    padding: 18px 16px 24px;
+  }
+  .phone-prefix {
+    font-size: 12.5px;
+    padding: 0 7px;
+  }
+}

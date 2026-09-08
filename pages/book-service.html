@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Book Service — HomeEase</title>
+  <link rel="stylesheet" href="../assets/css/global.css"/>
+  <link rel="stylesheet" href="../assets/css/dashboard.css"/>
+  <link rel="stylesheet" href="../assets/css/book-service.css"/>
+</head>
+<body class="dashboard-page">
+<div class="app-shell">
+
+  <!-- Top Bar -->
+  <header class="page-header">
+    <button class="back-btn" onclick="history.back()" aria-label="Go back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <span class="page-title">Book Service</span>
+    <img src="../assets/images/avatar-sayad.jpg" class="header-avatar" alt="Sayad"/>
+  </header>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar-wrap">
+    <div class="progress-meta"><span>STEP 1 OF 4</span><span>Issue &amp; Logistics</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+
+  <!-- Scrollable Content -->
+  <div class="page-scroll">
+
+    <div class="page-intro">
+      <h2>Tell us what you need</h2>
+      <p>Quick booking for verified technicians in Dhaka</p>
+    </div>
+    <div class="hub-badge"><span class="hub-dot"></span>Dhaka Hub Active</div>
+
+    <!-- Service Category -->
+    <div class="card-section">
+      <div class="card-block">
+        <div class="card-label-row">
+          <span class="card-label">Service Category</span>
+          <button class="card-action" id="editCategory" aria-label="Edit service category">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Edit
+          </button>
+        </div>
+        <div class="svc-row">
+          <div class="svc-icon-sm">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 1 0 4.93 19.07"/></svg>
+          </div>
+          <span class="svc-name-val" id="selectedCategory">Air Conditioner Master Servicing…</span>
+        </div>
+      </div>
+
+      <!-- Service Location -->
+      <div class="card-block" style="margin-top:12px;">
+        <div class="card-label-row">
+          <span style="font-size:14px;font-weight:700;color:var(--text-dark);display:flex;align-items:center;gap:6px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color:#FF6B2C"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Service Location
+          </span>
+          <button class="card-action" id="useCurrentLoc">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+            Use current location
+          </button>
+        </div>
+        <div class="loc-row">
+          <span class="loc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+          <span class="loc-text">House 42, Road 11, Banani, Dhaka</span>
+          <span class="loc-check"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></span>
+        </div>
+        <!-- Map Tile -->
+        <div class="map-tile">
+          <div class="map-roads"></div>
+          <div class="map-label-banani">Banani Sec 11</div>
+          <div class="map-pin">
+            <svg viewBox="0 0 24 24" fill="#E11D48"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div class="map-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3"/></svg></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Date Picker -->
+    <div class="section-row">
+      <div class="section-row-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Preferred Date
+      </div>
+      <span class="section-row-right">May 2025</span>
+    </div>
+    <div class="date-scroll" id="dateScroll" role="group" aria-label="Select date">
+      <div class="date-chip selected" data-date="22" role="radio" aria-checked="true" tabindex="0">
+        <div class="dc-tag">Today</div><div class="dc-num">22</div><div class="dc-day">Thu</div>
+      </div>
+      <div class="date-chip" data-date="23" role="radio" aria-checked="false" tabindex="0">
+        <div class="dc-tag">Tomorrow</div><div class="dc-num">23</div><div class="dc-day">Fri</div>
+      </div>
+      <div class="date-chip" data-date="24" role="radio" aria-checked="false" tabindex="0">
+        <div class="dc-tag">Upcoming</div><div class="dc-num">24</div><div class="dc-day">Sat</div>
+      </div>
+      <div class="date-chip" data-date="25" role="radio" aria-checked="false" tabindex="0">
+        <div class="dc-tag">Upcoming</div><div class="dc-num">25</div><div class="dc-day">Sun</div>
+      </div>
+      <div class="date-chip" data-date="26" role="radio" aria-checked="false" tabindex="0">
+        <div class="dc-tag">Upcoming</div><div class="dc-num">26</div><div class="dc-day">Mon</div>
+      </div>
+    </div>
+
+    <!-- Time Slots -->
+    <div class="section-row">
+      <div class="section-row-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Preferred Time Slot
+      </div>
+    </div>
+    <div class="time-slots" role="group" aria-label="Select time slot">
+      <div class="time-slot selected" data-slot="morning" role="radio" aria-checked="true" tabindex="0">
+        <div class="ts-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></div>
+        <div class="ts-info"><div class="ts-name">Morning Slot</div><div class="ts-hours">9:00 AM – 12:00 PM</div></div>
+        <div class="ts-radio filled"></div>
+      </div>
+      <div class="time-slot" data-slot="afternoon" role="radio" aria-checked="false" tabindex="0">
+        <div class="ts-icon" style="background:var(--input-bg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted)"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/><path d="M12 12a4 4 0 0 1 4 0" opacity=".4"/></svg></div>
+        <div class="ts-info"><div class="ts-name">Afternoon Slot</div><div class="ts-hours">2:00 PM – 5:00 PM</div></div>
+        <div class="ts-radio"></div>
+      </div>
+      <div class="time-slot" data-slot="evening" role="radio" aria-checked="false" tabindex="0">
+        <div class="ts-icon" style="background:var(--input-bg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted)"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div>
+        <div class="ts-info"><div class="ts-name">Evening Slot</div><div class="ts-hours">6:00 PM – 9:00 PM</div></div>
+        <div class="ts-radio"></div>
+      </div>
+    </div>
+
+    <!-- Service Priority -->
+    <div class="section-row">
+      <div class="section-row-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Service Priority
+      </div>
+      <span class="standard-dispatch">Standard Dispatch</span>
+    </div>
+    <div class="priority-wrap" role="group" aria-label="Select service priority">
+      <div class="priority-chip" data-priority="normal" role="radio" aria-checked="false" tabindex="0">
+        <div class="pc-name">Normal</div><div class="pc-price">Base Fare</div>
+      </div>
+      <div class="priority-chip" data-priority="priority" role="radio" aria-checked="false" tabindex="0">
+        <div class="pc-name">Priority</div><div class="pc-price">+৳150</div>
+      </div>
+      <div class="priority-chip selected urgent" data-priority="urgent" role="radio" aria-checked="true" tabindex="0">
+        <div class="pc-name">Urgent</div><div class="pc-price">+৳300</div>
+      </div>
+    </div>
+
+    <!-- Problem Description -->
+    <div class="section-row">
+      <div class="section-row-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Problem Description
+      </div>
+    </div>
+    <div class="desc-wrap">
+      <div class="desc-inner">
+        <textarea class="desc-textarea" id="descTextarea" maxlength="250" placeholder="Describe the problem in detail…" aria-label="Problem description">AC is blowing warm air and making a vibrating sound since yesterday afternoon.</textarea>
+        <span class="desc-counter"><span id="descCount">68</span>/250</span>
+      </div>
+    </div>
+
+    <!-- Reference Media -->
+    <div class="section-row">
+      <div class="section-row-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        Reference Media <span style="font-size:11px;font-weight:500;color:var(--text-light);margin-left:4px;">(Optional)</span>
+      </div>
+    </div>
+    <div class="media-wrap">
+      <div class="upload-zone" id="uploadZone" role="button" tabindex="0" aria-label="Upload media">
+        <div class="upload-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+        <div class="upload-title">Upload photos or short audio of the issue</div>
+        <div class="upload-sub">Helps technician arrive with the right spare valves &amp; gas cylinders</div>
+        <div class="upload-tags">
+          <span class="upload-tag">📎 JPG, PNG</span>
+          <span class="upload-tag">🎵 Audio Clip</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Warranty -->
+    <div class="section-row" style="padding-bottom:4px;">
+      <span></span>
+    </div>
+    <div class="warranty-wrap">
+      <div class="warranty-card">
+        <div class="warranty-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+        <div>
+          <div class="warranty-title">7-Day HomeEase Service Warranty</div>
+          <div class="warranty-text">Complimentary revisit if cooling issues persist after repair.</div>
+        </div>
+      </div>
+    </div>
+    <div style="height:90px;"></div>
+  </div><!-- /page-scroll -->
+
+  <!-- CTA -->
+  <div class="cta-bar">
+    <button class="cta-btn" id="nextBtn">
+      Next: Review &amp; Estimate
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
+  </div>
+
+</div><!-- /app-shell -->
+
+<!-- Category Modal -->
+<div class="modal-overlay" id="catModal" role="dialog" aria-modal="true" aria-label="Select service category">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Select Service Category</div>
+    <div id="catList">
+      <div class="modal-option" data-cat="Air Conditioner Master Servicing"><div class="modal-opt-icon svc-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#3B2FC9;width:20px;height:20px;"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 1 0 4.93 19.07"/></svg></div><span class="modal-opt-name">Air Conditioner Master Servicing</span></div>
+      <div class="modal-option" data-cat="Plumbing — Pipe &amp; Leakage Fix"><div class="modal-opt-icon" style="background:#FFF3E0"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><span class="modal-opt-name">Plumbing — Pipe &amp; Leakage Fix</span></div>
+      <div class="modal-option" data-cat="Electrical — Wiring &amp; Fan"><div class="modal-opt-icon" style="background:#FFFBEB"><svg viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><span class="modal-opt-name">Electrical — Wiring &amp; Fan</span></div>
+      <div class="modal-option" data-cat="Cleaning &amp; Pest Control"><div class="modal-opt-icon" style="background:#F0FDF4"><svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><span class="modal-opt-name">Cleaning &amp; Pest Control</span></div>
+      <div class="modal-option" data-cat="Home Maintenance"><div class="modal-opt-icon" style="background:#FFF1F2"><svg viewBox="0 0 24 24" fill="none" stroke="#E11D48" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 1 0 4.93 19.07 10 10 0 0 0 19.07 4.93z"/></svg></div><span class="modal-opt-name">Home Maintenance</span></div>
+      <div class="modal-option" data-cat="Moving &amp; Shifting"><div class="modal-opt-icon" style="background:#F0FDFA"><svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><span class="modal-opt-name">Moving &amp; Shifting</span></div>
+      <div class="modal-option" data-cat="Car Care &amp; Repair"><div class="modal-opt-icon" style="background:#F1F5F9"><svg viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><path d="M14 16H9m10 0h3v-3.15a2 2 0 0 0-.12-.47l-2.9-7.24A2 2 0 0 0 17.14 4H6.86a2 2 0 0 0-1.84 1.14L2.12 12.38A2 2 0 0 0 2 12.85V16h2"/><circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg></div><span class="modal-opt-name">Car Care &amp; Repair</span></div>
+      <div class="modal-option" data-cat="Personal Care"><div class="modal-opt-icon" style="background:#FDF4FF"><svg viewBox="0 0 24 24" fill="none" stroke="#A21CAF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><span class="modal-opt-name">Personal Care</span></div>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+<script>
+let _tt;
+function showToast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");clearTimeout(_tt);_tt=setTimeout(()=>t.classList.remove("show"),3000);}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  // Date chips
+  document.querySelectorAll(".date-chip").forEach(c=>{
+    c.addEventListener("click",()=>{
+      document.querySelectorAll(".date-chip").forEach(x=>{x.classList.remove("selected");x.setAttribute("aria-checked","false");});
+      c.classList.add("selected");c.setAttribute("aria-checked","true");
+    });
+  });
+
+  // Time slots
+  document.querySelectorAll(".time-slot").forEach(s=>{
+    s.addEventListener("click",()=>{
+      document.querySelectorAll(".time-slot").forEach(x=>{
+        x.classList.remove("selected");x.setAttribute("aria-checked","false");
+        x.querySelector(".ts-radio").classList.remove("filled");
+        x.querySelector(".ts-icon svg").setAttribute("stroke","currentColor");
+      });
+      s.classList.add("selected");s.setAttribute("aria-checked","true");
+      s.querySelector(".ts-radio").classList.add("filled");
+      s.querySelector(".ts-icon svg").setAttribute("stroke","white");
+    });
+  });
+
+  // Priority chips
+  document.querySelectorAll(".priority-chip").forEach(c=>{
+    c.addEventListener("click",()=>{
+      document.querySelectorAll(".priority-chip").forEach(x=>{x.classList.remove("selected","urgent");x.setAttribute("aria-checked","false");});
+      c.classList.add("selected");
+      if(c.dataset.priority==="urgent")c.classList.add("urgent");
+      c.setAttribute("aria-checked","true");
+    });
+  });
+
+  // Char counter
+  const ta=document.getElementById("descTextarea");
+  const ctr=document.getElementById("descCount");
+  ctr.textContent=ta.value.length;
+  ta.addEventListener("input",()=>ctr.textContent=ta.value.length);
+
+  // Upload zone
+  document.getElementById("uploadZone").addEventListener("click",()=>showToast("File upload simulated — photos attached!"));
+
+  // Category modal
+  document.getElementById("editCategory").addEventListener("click",()=>document.getElementById("catModal").classList.add("open"));
+  document.getElementById("catModal").addEventListener("click",e=>{if(e.target===document.getElementById("catModal"))document.getElementById("catModal").classList.remove("open");});
+  document.querySelectorAll(".modal-option").forEach(opt=>{
+    opt.addEventListener("click",()=>{
+      document.getElementById("selectedCategory").textContent=opt.dataset.cat+"…";
+      document.getElementById("catModal").classList.remove("open");
+      showToast("Category updated!");
+    });
+  });
+
+  // Use current location
+  document.getElementById("useCurrentLoc").addEventListener("click",()=>showToast("📍 Using current location: Gulshan-2, Dhaka"));
+
+  // CTA
+  document.getElementById("nextBtn").addEventListener("click",()=>{
+    showToast("✅ Booking submitted! Finding technician…");
+    setTimeout(()=>window.location.href="tracking.html",1000);
+  });
+});
+</script>
+</body>
+</html>

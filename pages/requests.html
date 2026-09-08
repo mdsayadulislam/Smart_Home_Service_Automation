@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>My Requests — HomeEase</title>
+  <link rel="stylesheet" href="../assets/css/global.css"/>
+  <link rel="stylesheet" href="../assets/css/dashboard.css"/>
+  <style>
+    .req-page-header{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 10px;background:var(--white);}
+    .req-page-title{font-size:20px;font-weight:800;color:var(--text-dark);}
+    .req-page-sub{font-size:13px;color:var(--text-muted);margin-top:2px;}
+    .filter-tabs{display:flex;gap:8px;padding:8px 18px 12px;background:var(--white);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
+    .filter-tabs::-webkit-scrollbar{display:none;}
+    .filter-tab{padding:8px 18px;border-radius:999px;border:1.5px solid var(--border);background:var(--white);font-size:13px;font-weight:600;color:var(--text-muted);cursor:pointer;white-space:nowrap;transition:all .2s;}
+    .filter-tab.active{background:var(--primary);border-color:var(--primary);color:#fff;box-shadow:0 4px 12px rgba(59,47,201,.3);}
+    .requests-list{padding:14px 18px;display:flex;flex-direction:column;gap:12px;}
+    .req-card{background:var(--white);border-radius:16px;padding:14px 16px;box-shadow:0 2px 10px rgba(59,47,201,.05);border:1.5px solid var(--border);transition:box-shadow .2s;}
+    .req-card:hover{box-shadow:0 4px 20px rgba(59,47,201,.1);}
+    .rc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+    .rc-left{display:flex;align-items:center;gap:10px;}
+    .rc-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .rc-icon svg{width:22px;height:22px;}
+    .rc-title{font-size:14px;font-weight:700;color:var(--text-dark);}
+    .rc-sub{font-size:12px;color:var(--text-muted);margin-top:2px;}
+    .rc-status{padding:5px 12px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap;}
+    .rc-status.active{background:#FFF3E0;color:#E65100;border:1.5px solid #FFE0B2;}
+    .rc-status.completed{background:#F0FDF4;color:#15803D;border:1.5px solid #BBF7D0;}
+    .rc-status.scheduled{background:#EEF0FF;color:#3B2FC9;border:1.5px solid #C7D2FE;}
+    .rc-status.cancelled{background:#F9FAFB;color:#9CA3AF;border:1.5px solid #E5E7EB;}
+    .rc-divider{height:1px;background:var(--border);margin:10px 0;}
+    .rc-bottom{display:flex;align-items:center;justify-content:space-between;}
+    .rc-provider{display:flex;align-items:center;gap:8px;}
+    .rc-pav{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;}
+    .rc-pname{font-size:12.5px;font-weight:600;color:var(--text-dark);}
+    .rc-meta{font-size:11px;color:var(--text-muted);}
+    .rc-right{display:flex;align-items:center;gap:8px;}
+    .rc-price{font-size:14px;font-weight:800;color:var(--text-dark);}
+    .rc-rating{font-size:12px;font-weight:600;color:#D97706;background:#FFFBEB;padding:3px 8px;border-radius:999px;}
+    .track-btn{padding:8px 16px;background:var(--primary);color:#fff;border:none;border-radius:999px;font-size:12px;font-weight:700;cursor:pointer;transition:transform .15s,box-shadow .15s;}
+    .track-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(59,47,201,.3);}
+    .fab{position:fixed;bottom:80px;right:calc(50% - 190px);width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--primary-mid),var(--primary));color:#fff;border:none;font-size:26px;font-weight:300;cursor:pointer;box-shadow:0 6px 20px rgba(59,47,201,.4);display:flex;align-items:center;justify-content:center;transition:transform .15s,box-shadow .15s;z-index:99;}
+    .fab:hover{transform:scale(1.08);box-shadow:0 8px 28px rgba(59,47,201,.5);}
+    .empty-state{text-align:center;padding:48px 24px;}
+    .empty-icon{width:80px;height:80px;border-radius:50%;background:var(--primary-light);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+    .empty-icon svg{width:40px;height:40px;color:var(--primary);}
+    .empty-title{font-size:16px;font-weight:700;color:var(--text-dark);}
+    .empty-sub{font-size:13px;color:var(--text-muted);margin-top:6px;}
+  </style>
+</head>
+<body class="dashboard-page">
+<div class="app-shell">
+
+  <!-- Top bar -->
+  <header class="top-bar">
+    <div class="brand">
+      <div class="brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg></div>
+      HomeEase
+    </div>
+    <button class="notif-btn" onclick="showToast('🔔 2 new notifications')" aria-label="Notifications">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      <span class="notif-badge">2</span>
+    </button>
+    <a href="profile.html" class="avatar-btn"><img src="../assets/images/avatar-sayad.jpg" alt="Sayad" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"/></a>
+  </header>
+
+  <!-- Page Header -->
+  <div class="req-page-header">
+    <div>
+      <div class="req-page-title">My Requests</div>
+      <div class="req-page-sub">3 active &nbsp;·&nbsp; 12 completed</div>
+    </div>
+  </div>
+
+  <!-- Filter Tabs -->
+  <div class="filter-tabs" role="tablist" aria-label="Filter requests">
+    <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+    <button class="filter-tab" data-filter="active" role="tab" aria-selected="false">Active</button>
+    <button class="filter-tab" data-filter="completed" role="tab" aria-selected="false">Completed</button>
+    <button class="filter-tab" data-filter="cancelled" role="tab" aria-selected="false">Cancelled</button>
+  </div>
+
+  <!-- List -->
+  <div class="page-scroll" style="padding-bottom:88px;">
+    <div class="requests-list" id="requestsList">
+
+      <!-- Card 1: Active -->
+      <div class="req-card" data-status="active">
+        <div class="rc-top">
+          <div class="rc-left">
+            <div class="rc-icon" style="background:#EEF0FF;"><svg viewBox="0 0 24 24" fill="none" stroke="#3B2FC9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 7l-5-5-5 5"/><path d="M17 17l-5 5-5-5"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M7 7l-5 5 5 5"/><path d="M17 7l5 5-5 5"/></svg></div>
+            <div><div class="rc-title">AC Filter Servicing</div><div class="rc-sub">Master Bed Split AC (1.5 Ton)</div></div>
+          </div>
+          <span class="rc-status active">On the Way</span>
+        </div>
+        <div class="rc-divider"></div>
+        <div class="rc-bottom">
+          <div class="rc-provider">
+            <div class="rc-pav" style="background:linear-gradient(135deg,#6B5CE7,#3B2FC9);">RU</div>
+            <div><div class="rc-pname">Rahim Uddin</div><div class="rc-meta">Today, 2:15 PM</div></div>
+          </div>
+          <div class="rc-right">
+            <span class="rc-price">৳1,200</span>
+            <button class="track-btn" onclick="window.location.href='tracking.html'">Track →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Completed -->
+      <div class="req-card" data-status="completed">
+        <div class="rc-top">
+          <div class="rc-left">
+            <div class="rc-icon" style="background:#EEF0FF;"><svg viewBox="0 0 24 24" fill="none" stroke="#3B2FC9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 1 0 4.93 19.07"/></svg></div>
+            <div><div class="rc-title">AC Deep Servicing &amp; Gas Refill</div><div class="rc-sub">Master Bedroom, Gulshan-2</div></div>
+          </div>
+          <span class="rc-status completed">Completed</span>
+        </div>
+        <div class="rc-divider"></div>
+        <div class="rc-bottom">
+          <div class="rc-provider">
+            <div class="rc-pav" style="background:linear-gradient(135deg,var(--primary-mid),var(--primary));">KR</div>
+            <div><div class="rc-pname">Kazi Rahim</div><div class="rc-meta">Sep 5, 2026</div></div>
+          </div>
+          <div class="rc-right">
+            <span class="rc-price">৳2,850</span>
+            <span class="rc-rating">⭐ 4.9</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Active (Scheduled) -->
+      <div class="req-card" data-status="active">
+        <div class="rc-top">
+          <div class="rc-left">
+            <div class="rc-icon" style="background:#FFF3E0;"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+            <div><div class="rc-title">Plumbing — Pipe Leakage Fix</div><div class="rc-sub">Kitchen, Banani</div></div>
+          </div>
+          <span class="rc-status scheduled">Scheduled</span>
+        </div>
+        <div class="rc-divider"></div>
+        <div class="rc-bottom">
+          <div class="rc-provider">
+            <div class="rc-pav" style="background:linear-gradient(135deg,#F97316,#EA580C);">KA</div>
+            <div><div class="rc-pname">Karim Ali</div><div class="rc-meta">Sep 10, 2026</div></div>
+          </div>
+          <div class="rc-right"><span class="rc-price">৳800</span></div>
+        </div>
+      </div>
+
+      <!-- Card 4: Cancelled -->
+      <div class="req-card" data-status="cancelled">
+        <div class="rc-top">
+          <div class="rc-left">
+            <div class="rc-icon" style="background:#FFFBEB;"><svg viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+            <div><div class="rc-title">Electrical — Fan Installation</div><div class="rc-sub">Living Room, Banani</div></div>
+          </div>
+          <span class="rc-status cancelled">Cancelled</span>
+        </div>
+        <div class="rc-divider"></div>
+        <div class="rc-bottom">
+          <div class="rc-provider">
+            <div class="rc-pav" style="background:#9CA3AF;">—</div>
+            <div><div class="rc-pname" style="color:var(--text-muted);">Not Assigned</div><div class="rc-meta">Sep 3, 2026</div></div>
+          </div>
+          <div class="rc-right"><span class="rc-price">৳650</span></div>
+        </div>
+      </div>
+
+      <!-- Card 5: Completed -->
+      <div class="req-card" data-status="completed">
+        <div class="rc-top">
+          <div class="rc-left">
+            <div class="rc-icon" style="background:#F0FDF4;"><svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            <div><div class="rc-title">Home Cleaning</div><div class="rc-sub">Full House, Gulshan-2</div></div>
+          </div>
+          <span class="rc-status completed">Completed</span>
+        </div>
+        <div class="rc-divider"></div>
+        <div class="rc-bottom">
+          <div class="rc-provider">
+            <div class="rc-pav" style="background:linear-gradient(135deg,#F472B6,#EC4899);">RB</div>
+            <div><div class="rc-pname">Rashida Begum</div><div class="rc-meta">Aug 28, 2026</div></div>
+          </div>
+          <div class="rc-right">
+            <span class="rc-price">৳1,500</span>
+            <span class="rc-rating">⭐ 4.7</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty state (hidden by default) -->
+      <div class="empty-state" id="emptyState" style="display:none;">
+        <div class="empty-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="empty-title">No requests found</div>
+        <div class="empty-sub">No requests in this category yet.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FAB -->
+  <button class="fab" onclick="window.location.href='book-service.html'" aria-label="Book new service" title="Book New Service">+</button>
+
+  <!-- Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="dashboard.html" class="nav-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span class="nav-label">Home</span></a>
+    <a href="requests.html" class="nav-item active" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span class="nav-label">Requests</span></a>
+    <a href="alerts.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="nav-label">Alerts</span></a>
+    <a href="profile.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="nav-label">Profile</span></a>
+  </nav>
+
+</div>
+<div id="toast" class="toast" role="alert" aria-live="polite"></div>
+<script>
+let _tt;
+function showToast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");clearTimeout(_tt);_tt=setTimeout(()=>t.classList.remove("show"),3000);}
+document.addEventListener("DOMContentLoaded",()=>{
+  const tabs=document.querySelectorAll(".filter-tab");
+  const cards=document.querySelectorAll(".req-card");
+  const empty=document.getElementById("emptyState");
+  tabs.forEach(tab=>{
+    tab.addEventListener("click",()=>{
+      tabs.forEach(t=>{t.classList.remove("active");t.setAttribute("aria-selected","false");});
+      tab.classList.add("active");tab.setAttribute("aria-selected","true");
+      const f=tab.dataset.filter;
+      let visible=0;
+      cards.forEach(c=>{
+        const show=f==="all"||c.dataset.status===f;
+        c.style.display=show?"block":"none";
+        if(show)visible++;
+      });
+      empty.style.display=visible===0?"block":"none";
+    });
+  });
+});
+</script>
+</body>
+</html>
