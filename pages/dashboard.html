@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home — HomeEase Smart BD</title>
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/dashboard.css" />
+</head>
+<body class="dashboard-page">
+
+<!-- ══════════════════════════════════════════
+     APP SHELL
+══════════════════════════════════════════ -->
+<div class="app-shell">
+
+  <!-- ── Top Bar ── -->
+  <header class="top-bar">
+    <div class="brand">
+      <div class="brand-icon">
+        <!-- Smart home icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
+          <path d="M9 21V12h6v9"/>
+        </svg>
+      </div>
+      HomeEase
+    </div>
+
+    <button class="notif-btn" id="notifBtn" aria-label="Notifications">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+      </svg>
+      <span class="notif-badge" aria-label="2 notifications">2</span>
+    </button>
+
+    <button class="avatar-btn" aria-label="My Profile">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- ── Greeting ── -->
+  <div class="greeting-block">
+    <div class="greeting-name">
+      Hi, Sayad
+      <span aria-label="waving hand" role="img">👋</span>
+    </div>
+    <div class="location-row" id="locationRow" role="button" tabindex="0" aria-label="Change location">
+      <!-- Map pin -->
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+      </svg>
+      <span class="location-text">Gulshan-2, Dhaka</span>
+      <!-- Caret down -->
+      <svg class="location-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ── Search Bar ── -->
+  <div class="search-wrap">
+    <div class="search-inner">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input
+        type="text"
+        id="searchInput"
+        class="search-input"
+        placeholder="Search for AC repair, plumbing, maid..."
+        aria-label="Search services"
+      />
+      <button class="mic-btn" id="micBtn" aria-label="Voice search">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+          <line x1="12" y1="19" x2="12" y2="23"/>
+          <line x1="8" y1="23" x2="16" y2="23"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══ SCROLLABLE CONTENT ══ -->
+  <div class="page-scroll">
+
+    <!-- ── Promo Banner ── -->
+    <section class="promo-section" aria-label="Summer promotion">
+      <div class="promo-banner">
+        <div class="promo-content">
+          <div class="promo-tag">
+            <!-- Sun icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Summer Cool Deal
+          </div>
+          <div class="promo-title">20% off AC Servicing &amp;<br>Deep Cleaning</div>
+          <div class="promo-sub">Stay chilled in Dhaka heat with<br>verified pros.</div>
+          <button class="promo-btn" id="bookNowBtn">
+            Book Now
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </button>
+        </div>
+        <!-- Fan / AC icon -->
+        <div class="promo-icon-wrap" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 12c1.5-2 4-2.5 5.5-1.5s2 4 0 5.5-4.5 1.5-5.5 0"/>
+            <path d="M12 12c-1.5 2-4 2.5-5.5 1.5s-2-4 0-5.5 4.5-1.5 5.5 0"/>
+            <path d="M12 12c2 1.5 2.5 4 1.5 5.5s-4 2-5.5 0-1.5-4.5 0-5.5"/>
+            <path d="M12 12c-2-1.5-2.5-4-1.5-5.5s4-2 5.5 0 1.5 4.5 0 5.5"/>
+            <circle cx="12" cy="12" r="2"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Recent Requests ── -->
+    <div class="section-header">
+      <div>
+        <div class="section-title">Recent Requests</div>
+      </div>
+      <a href="#" class="view-all" id="viewAllRequests" role="button">View all (3)</a>
+    </div>
+
+    <section class="requests-section" aria-label="Recent service requests">
+      <div class="request-card">
+
+        <!-- Request row -->
+        <div class="request-main">
+          <div class="request-left">
+            <div class="req-icon" aria-hidden="true">
+              <!-- AC / snowflake icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="2" x2="12" y2="22"/>
+                <path d="M17 7l-5-5-5 5"/>
+                <path d="M17 17l-5 5-5-5"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M7 7l-5 5 5 5"/>
+                <path d="M17 7l5 5-5 5"/>
+              </svg>
+            </div>
+            <div>
+              <div class="req-title">AC Filter Servicing</div>
+              <div class="req-sub">Master Bed Split AC (1.5 Ton)</div>
+            </div>
+          </div>
+          <span class="status-badge on-the-way" aria-label="Status: On the Way">
+            On the<br>Way
+          </span>
+        </div>
+
+        <!-- Provider row -->
+        <div class="provider-row">
+          <div class="provider-info">
+            <div class="provider-avatar" aria-hidden="true">
+              <!-- Provider photo placeholder -->
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path d="M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm0 2c-2.7 0-8 1.35-8 4v2h16v-2c0-2.65-5.3-4-8-4z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="provider-name">Rahim Uddin</div>
+              <div class="provider-eta">Arriving in <strong id="etaMinutes">12 mins</strong></div>
+            </div>
+          </div>
+          <div class="provider-actions">
+            <button class="icon-action-btn call" id="callProvider" aria-label="Call Rahim Uddin">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.91-.86a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </button>
+            <button class="icon-action-btn chat" id="chatProvider" aria-label="Chat with Rahim Uddin">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Explore Services ── -->
+    <section class="services-section" aria-label="Explore services">
+      <div class="section-header" style="padding: 20px 0 0;">
+        <div>
+          <div class="section-title">Explore Services</div>
+          <div class="section-subtitle">Vetted experts with upfront ৳ Taka pricing</div>
+        </div>
+        <span class="section-badge">DHAKA HUB</span>
+      </div>
+
+      <div class="services-grid" role="list">
+
+        <!-- Appliance & Gadgets -->
+        <div class="service-card" role="listitem" tabindex="0" aria-label="Appliance and Gadgets, 42 professionals">
+          <div class="pros-count">42 pros</div>
+          <div class="service-icon-wrap svc-blue" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <div class="service-name">Appliance &amp;<br>Gadgets</div>
+          <div class="service-desc">Microwave, AC, TV &amp;…</div>
+        </div>
+
+        <!-- Plumbing -->
+        <div class="service-card" role="listitem" tabindex="0" aria-label="Plumbing, 28 professionals">
+          <div class="pros-count">28 pros</div>
+          <div class="service-icon-wrap svc-orange" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          <div class="service-name">Plumbing</div>
+          <div class="service-desc">Leakage, Pipe Fitting…</div>
+        </div>
+
+        <!-- Electrical -->
+        <div class="service-card" role="listitem" tabindex="0" aria-label="Electrical, 35 professionals">
+          <div class="pros-count">35 pros</div>
+          <div class="service-icon-wrap svc-yellow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          </div>
+          <div class="service-name">Electrical</div>
+          <div class="service-desc">Short circuit, Fan…</div>
+        </div>
+
+        <!-- Cleaning & Pest -->
+        <div class="service-card" role="listitem" tabindex="0" aria-label="Cleaning and Pest control, 51 professionals">
+          <div class="pros-count">51 pros</div>
+          <div class="service-icon-wrap svc-green" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <div class="service-name">Cleaning &amp; Pest</div>
+          <div class="service-desc">Deep home clean &amp;…</div>
+        </div>
+
+        <!-- Home Maintenance -->
+        <div class="service-card" role="listitem" tabindex="0" aria-label="Home Maintenance, 19 professionals">
+          <div class="pros-count">19 pros</div>
+          <div class="service-icon-wrap svc-rose" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.07 4.93A10 10 0 1 0 4.93 19.07 10 10 0 0 0 19.07 4.93z"/>
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+            </svg>
+          </div>
+          <div class="service-name">Home<br>Maintenance</div>
+          <div class="service-desc">Painting, Carpentry, Dril…</div>
+        </div>
+
+        <!-- Moving & Shifting -->
+        <div class="service-card" role="listitem" tabindex="0" aria-label="Moving and Shifting, 14 professionals">
+          <div class="pros-count">14 pros</div>
+          <div class="service-icon-wrap svc-teal" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="3" width="15" height="13" rx="1"/>
+              <path d="M16 8h4l3 3v5h-7V8z"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <div class="service-name">Moving &amp; Shifting</div>
+          <div class="service-desc">Apartment relocation &amp;…</div>
+        </div>
+
+        <!-- Car Care & Repair -->
+        <div class="service-card" role="listitem" tabindex="0" aria-label="Car Care and Repair, 22 professionals">
+          <div class="pros-count">22 pros</div>
+          <div class="service-icon-wrap svc-gray" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 16H9m10 0h3v-3.15a2 2 0 0 0-.12-.47l-2.9-7.24A2 2 0 0 0 17.14 4H6.86a2 2 0 0 0-1.84 1.14L2.12 12.38A2 2 0 0 0 2 12.85V16h2"/>
+              <circle cx="6.5" cy="16.5" r="2.5"/>
+              <circle cx="16.5" cy="16.5" r="2.5"/>
+            </svg>
+          </div>
+          <div class="service-name">Car Care &amp; Repair</div>
+          <div class="service-desc">Water wash, Mechanic o…</div>
+        </div>
+
+        <!-- Personal Care -->
+        <div class="service-card" role="listitem" tabindex="0" aria-label="Personal Care, 37 professionals">
+          <div class="pros-count">37 pros</div>
+          <div class="service-icon-wrap svc-pink" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <div class="service-name">Personal Care</div>
+          <div class="service-desc">Salon, Spa &amp; Grooming a…</div>
+        </div>
+
+      </div><!-- /services-grid -->
+
+      <!-- ── HomeEase 100% Assurance ── -->
+      <div class="assurance-card mt-16" role="complementary" aria-label="HomeEase assurance">
+        <div class="assurance-shield" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+        </div>
+        <div>
+          <div class="assurance-title">HomeEase 100% Assurance</div>
+          <div class="assurance-text">NID-verified professionals &amp; guaranteed re-work cover across Dhaka.</div>
+        </div>
+      </div>
+
+    </section><!-- /services-section -->
+
+  </div><!-- /page-scroll -->
+
+  <!-- ══ BOTTOM NAVIGATION ══ -->
+  <nav class="bottom-nav" aria-label="Main navigation">
+
+    <a href="dashboard.html" class="nav-item active" aria-label="Home" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+      </svg>
+      <span class="nav-label">Home</span>
+    </a>
+
+    <a href="#" class="nav-item" aria-label="Requests">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+      </svg>
+      <span class="nav-label">Requests</span>
+    </a>
+
+    <a href="#" class="nav-item" aria-label="Alerts">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+      </svg>
+      <span class="nav-label">Alerts</span>
+    </a>
+
+    <a href="#" class="nav-item" aria-label="Profile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+      <span class="nav-label">Profile</span>
+    </a>
+
+  </nav>
+
+</div><!-- /app-shell -->
+
+<!-- Toast (injected by JS) -->
+<div id="dashToast" class="toast" role="alert" aria-live="polite"></div>
+
+<script src="../assets/js/dashboard.js"></script>
+</body>
+</html>
