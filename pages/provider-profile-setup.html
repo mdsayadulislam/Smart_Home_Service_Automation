@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Setup Provider Profile — HomeEase Pro</title>
+  <link rel="stylesheet" href="../assets/css/global.css"/>
+  <link rel="stylesheet" href="../assets/css/dashboard.css"/>
+  <link rel="stylesheet" href="../assets/css/profile.css"/>
+  <link rel="stylesheet" href="../assets/css/provider-setup.css"/>
+</head>
+<body class="dashboard-page">
+<div class="app-shell">
+
+  <!-- Header -->
+  <header class="setup-header">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <a href="provider-dashboard.html" class="modal-close-btn" style="text-decoration:none;" aria-label="Go back">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </a>
+      <div class="setup-title">Partner Profile Setup</div>
+    </div>
+    <span class="setup-step-pill">Registration</span>
+  </header>
+
+  <div class="page-scroll" style="padding-bottom:30px;">
+
+    <form id="providerSetupForm" style="padding: 16px 18px;">
+
+      <!-- Photo Upload Box -->
+      <div class="pro-photo-uploader">
+        <img src="../assets/images/logo.png" id="proPhotoPreview" class="pro-photo-preview" alt="Technician Photo" />
+        <div class="pro-photo-info">
+          <div class="pro-photo-title">Technician Profile Photo</div>
+          <div class="pro-photo-sub">Helps customers recognize you upon arrival</div>
+          <label for="proPhotoInput" class="pro-photo-btn">📷 Upload New Photo</label>
+          <input type="file" id="proPhotoInput" accept="image/*" style="display:none;" />
+        </div>
+      </div>
+
+      <!-- Category Selection -->
+      <div style="margin-bottom: 20px;">
+        <div style="font-size:14px; font-weight:800; color:var(--text-dark);">
+          1. Select Your Service Category <span style="color:#DC2626;">*</span>
+        </div>
+        <div style="font-size:12px; color:var(--text-muted); margin-top:2px;">
+          Choose your primary trade to receive matched customer requests
+        </div>
+
+        <div class="category-picker-grid">
+
+          <!-- 1. Plumbing -->
+          <div class="cat-select-card selected" data-cat="Plumbing" data-slug="plumbing">
+            <div class="cat-icon-circle cat-c-plumbing">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="cat-card-name">Plumbing</div>
+              <div class="cat-card-desc">Pipes, leaks &amp; taps</div>
+            </div>
+          </div>
+
+          <!-- 2. Car Care & Repairing -->
+          <div class="cat-select-card" data-cat="Car Care & Repair" data-slug="car-care">
+            <div class="cat-icon-circle cat-c-car">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 16H9m10 0h3v-3.15a2 2 0 0 0-.12-.47l-2.9-7.24A2 2 0 0 0 17.14 4H6.86a2 2 0 0 0-1.84 1.14L2.12 12.38A2 2 0 0 0 2 12.85V16h2"/>
+                <circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/>
+              </svg>
+            </div>
+            <div>
+              <div class="cat-card-name">Car Care &amp; Repair</div>
+              <div class="cat-card-desc">Wash, engine, battery</div>
+            </div>
+          </div>
+
+          <!-- 3. Personal Care -->
+          <div class="cat-select-card" data-cat="Personal Care" data-slug="personal-care">
+            <div class="cat-icon-circle cat-c-personal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="cat-card-name">Personal Care</div>
+              <div class="cat-card-desc">Salon, spa &amp; grooming</div>
+            </div>
+          </div>
+
+          <!-- 4. Appliance & Gadgets -->
+          <div class="cat-select-card" data-cat="Appliance & Gadgets" data-slug="appliance-gadgets">
+            <div class="cat-icon-circle cat-c-appliance">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <div>
+              <div class="cat-card-name">Appliance &amp; Gadgets</div>
+              <div class="cat-card-desc">AC, microwave, TV</div>
+            </div>
+          </div>
+
+          <!-- 5. Electrical -->
+          <div class="cat-select-card" data-cat="Electrical" data-slug="electrical">
+            <div class="cat-icon-circle cat-c-electrical">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </div>
+            <div>
+              <div class="cat-card-name">Electrical</div>
+              <div class="cat-card-desc">Wiring, fan, switch</div>
+            </div>
+          </div>
+
+          <!-- 6. Cleaning & Pest -->
+          <div class="cat-select-card" data-cat="Cleaning & Pest" data-slug="cleaning-pest">
+            <div class="cat-icon-circle cat-c-cleaning">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+            </div>
+            <div>
+              <div class="cat-card-name">Cleaning &amp; Pest</div>
+              <div class="cat-card-desc">Deep cleaning, spray</div>
+            </div>
+          </div>
+
+          <!-- 7. Home Maintenance -->
+          <div class="cat-select-card" data-cat="Home Maintenance" data-slug="home-maintenance">
+            <div class="cat-icon-circle cat-c-maint">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 1 0 4.93 19.07 10 10 0 0 0 19.07 4.93z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="cat-card-name">Home Maintenance</div>
+              <div class="cat-card-desc">Carpentry, painting</div>
+            </div>
+          </div>
+
+          <!-- 8. Moving & Shifting -->
+          <div class="cat-select-card" data-cat="Moving & Shifting" data-slug="moving-shifting">
+            <div class="cat-icon-circle cat-c-moving">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+            <div>
+              <div class="cat-card-name">Moving &amp; Shifting</div>
+              <div class="cat-card-desc">House, flat relocation</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Personal & Professional Information -->
+      <div style="font-size:14px; font-weight:800; color:var(--text-dark); margin-bottom:12px;">
+        2. Professional &amp; Identity Details
+      </div>
+
+      <div class="modal-form-group">
+        <label class="modal-label">Full Name <span style="color:#DC2626;">*</span></label>
+        <input type="text" id="proNameInput" class="modal-input" placeholder="e.g. Kazi Rahim" required />
+      </div>
+
+      <div class="modal-form-group">
+        <label class="modal-label">Contact Mobile Number <span style="color:#DC2626;">*</span></label>
+        <input type="tel" id="proPhoneInput" class="modal-input" placeholder="+880 17XX-XXXXXX" required />
+      </div>
+
+      <div class="modal-form-group">
+        <label class="modal-label">Business Email (Optional)</label>
+        <input type="email" id="proEmailInput" class="modal-input" placeholder="partner@homeease.bd" />
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+        <div class="modal-form-group">
+          <label class="modal-label">Years of Experience</label>
+          <select id="proExpSelect" class="modal-input" style="background:#fff;">
+            <option value="1-2 yrs">1 - 2 Years</option>
+            <option value="3-5 yrs" selected>3 - 5 Years</option>
+            <option value="5+ yrs">5 - 10 Years</option>
+            <option value="10+ yrs">10+ Years (Master Pro)</option>
+          </select>
+        </div>
+
+        <div class="modal-form-group">
+          <label class="modal-label">Operational Hub <span style="color:#DC2626;">*</span></label>
+          <select id="proHubSelect" class="modal-input" style="background:#fff;">
+            <option value="Dhaka North Hub" selected>Dhaka North Hub</option>
+            <option value="Dhaka South Hub">Dhaka South Hub</option>
+            <option value="Gulshan & Banani Hub">Gulshan &amp; Banani Hub</option>
+            <option value="Mirpur Central Hub">Mirpur Central Hub</option>
+            <option value="Uttara Sector Hub">Uttara Sector Hub</option>
+            <option value="Chattogram Hub">Chattogram Regional Hub</option>
+            <option value="Sylhet Hub">Sylhet City Hub</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1fr 1.2fr; gap:10px;">
+        <div class="modal-form-group">
+          <label class="modal-label">Vehicle Type</label>
+          <select id="proVehicleType" class="modal-input" style="background:#fff;">
+            <option value="Motorcycle" selected>Motorcycle</option>
+            <option value="Bicycle">Bicycle</option>
+            <option value="Van / Pickup">Van / Pickup</option>
+            <option value="Public Transport">None</option>
+          </select>
+        </div>
+
+        <div class="modal-form-group">
+          <label class="modal-label">Vehicle Plate Number</label>
+          <input type="text" id="proVehicleNumber" class="modal-input" placeholder="Dhaka Metro-Ha 42-9912" />
+        </div>
+      </div>
+
+      <div class="modal-form-group">
+        <label class="modal-label">National NID / Smart Card Number</label>
+        <input type="text" id="proNidInput" class="modal-input" placeholder="10 or 17 digit NID number" />
+      </div>
+
+      <!-- Verification Guarantee Badge -->
+      <div class="nid-verify-box">
+        <div class="nid-shield-icon">✓</div>
+        <div>
+          <div class="nid-verify-title">BD Secure &amp; NID Verification</div>
+          <div class="nid-verify-desc">Verified partners receive up to 3x more service bookings with instant payouts.</div>
+        </div>
+      </div>
+
+      <button type="submit" id="saveProBtn" class="modal-btn-submit" style="margin-top:20px;">
+        Save &amp; Launch Partner Portal →
+      </button>
+
+    </form>
+
+  </div>
+
+  <!-- Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="provider-dashboard.html" class="nav-item active">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+      </svg>
+      <span class="nav-label">Pro Portal</span>
+    </a>
+    <a href="dashboard.html" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+      </svg>
+      <span class="nav-label">Customer View</span>
+    </a>
+    <a href="login.html" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+      </svg>
+      <span class="nav-label">Log Out</span>
+    </a>
+  </nav>
+
+</div>
+
+<div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+<script src="../assets/js/provider-setup.js"></script>
+</body>
+</html>

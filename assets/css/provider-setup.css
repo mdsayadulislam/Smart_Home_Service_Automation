@@ -1,0 +1,209 @@
+/* ============================================================
+   HomeEase Pro — Service Provider Profile & Category Setup Styles
+   ============================================================ */
+
+.setup-header {
+  padding: 20px 18px 14px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.setup-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.setup-step-pill {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(59, 47, 201, 0.2);
+}
+
+/* Category Grid */
+.category-picker-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.cat-select-card {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 12px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cat-select-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 47, 201, 0.12);
+}
+
+.cat-select-card.selected {
+  border-color: var(--primary);
+  background: #F8F9FF;
+  box-shadow: 0 0 0 3px rgba(59, 47, 201, 0.18);
+}
+
+.cat-select-card.selected::after {
+  content: '✓';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.cat-icon-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.cat-icon-circle svg {
+  width: 22px;
+  height: 22px;
+}
+
+.cat-card-name {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--text-dark);
+  line-height: 1.25;
+}
+
+.cat-card-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 3px;
+  line-height: 1.35;
+}
+
+/* Category Color Variants */
+.cat-c-appliance { background: #EEF0FF; color: #3B2FC9; }
+.cat-c-plumbing  { background: #FFF3E0; color: #F97316; }
+.cat-c-electrical{ background: #FFFBEB; color: #D97706; }
+.cat-c-cleaning  { background: #F0FDF4; color: #16A34A; }
+.cat-c-maint     { background: #FFF1F2; color: #E11D48; }
+.cat-c-moving    { background: #F0FDFA; color: #0D9488; }
+.cat-c-car       { background: #F1F5F9; color: #475569; }
+.cat-c-personal  { background: #FDF4FF; color: #A21CAF; }
+
+/* Photo Upload Box */
+.pro-photo-uploader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+
+.pro-photo-preview {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid var(--primary);
+  background: var(--input-bg);
+}
+
+.pro-photo-info {
+  flex: 1;
+}
+
+.pro-photo-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.pro-photo-sub {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.pro-photo-btn {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 14px;
+  background: var(--primary-light);
+  color: var(--primary);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid rgba(59, 47, 201, 0.2);
+  transition: all 0.2s;
+}
+
+.pro-photo-btn:hover {
+  background: #dfe3ff;
+}
+
+/* Verification Shield Box */
+.nid-verify-box {
+  background: #F0FDF4;
+  border: 1.5px solid #BBF7D0;
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.nid-shield-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #22C55E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.nid-verify-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #15803D;
+}
+
+.nid-verify-desc {
+  font-size: 11px;
+  color: #166534;
+  margin-top: 1px;
+}
