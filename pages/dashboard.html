@@ -27,17 +27,23 @@
       HomeEase
     </div>
 
-    <button class="notif-btn" id="notifBtn" aria-label="Notifications">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-      </svg>
-      <span class="notif-badge" aria-label="2 notifications">2</span>
-    </button>
+    <div style="display:flex; align-items:center; gap:8px;">
+      <a href="provider-dashboard.html" title="Switch to Provider Portal" style="display:flex; align-items:center; gap:4px; font-size:11.5px; font-weight:700; color:var(--primary); background:var(--primary-light); border:1px solid rgba(59,47,201,0.2); padding:6px 10px; border-radius:999px; text-decoration:none;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        Pro Mode
+      </a>
+      <button class="notif-btn" id="notifBtn" aria-label="Notifications">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>
+        <span class="notif-badge" aria-label="2 notifications">2</span>
+      </button>
 
-    <a href="profile.html" class="avatar-btn" aria-label="My Profile">
-      <img src="../assets/images/avatar-sayad.jpg" alt="Sayad" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
-    </a>
+      <a href="profile.html" class="avatar-btn" aria-label="My Profile">
+        <img src="../assets/images/avatar-sayad.jpg" alt="Sayad" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
+      </a>
+    </div>
   </header>
 
   <!-- ── Greeting ── -->

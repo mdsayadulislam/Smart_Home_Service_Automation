@@ -77,13 +77,22 @@ document.addEventListener("DOMContentLoaded", () => {
       Logging in…
     `;
 
+    const activeRoleBtn = document.querySelector(".role-toggle button.active");
+    const role = activeRoleBtn ? activeRoleBtn.dataset.role : "customer";
+
     setTimeout(() => {
-      showToast("✅ Login successful! Redirecting…");
-      setTimeout(() => {
-        // Redirect to dashboard (adjust path as needed)
-        window.location.href = "../pages/dashboard.html";
-      }, 1200);
-    }, 1800);
+      if (role === "provider") {
+        showToast("👨‍🔧 Welcome Partner! Loading Provider Portal…");
+        setTimeout(() => {
+          window.location.href = "provider-dashboard.html";
+        }, 1000);
+      } else {
+        showToast("✅ Login successful! Loading Dashboard…");
+        setTimeout(() => {
+          window.location.href = "dashboard.html";
+        }, 1000);
+      }
+    }, 1200);
   });
 
   /* ---- Social Login Buttons ---- */
