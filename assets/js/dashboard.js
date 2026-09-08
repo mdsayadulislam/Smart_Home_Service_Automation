@@ -113,3 +113,4 @@ document.addEventListener("DOMContentLoaded", () => {
     toastTimer = setTimeout(() => toast.classList.remove("show"), 3000);
   }
 });
+
