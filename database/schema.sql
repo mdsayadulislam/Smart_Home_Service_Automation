@@ -191,3 +191,4 @@ CREATE INDEX IF NOT EXISTS idx_bookings_code ON bookings(order_code);
 CREATE INDEX IF NOT EXISTS idx_bookings_status ON bookings(status);
 CREATE INDEX IF NOT EXISTS idx_notifications_user_read ON notifications(user_id, is_read);
 CREATE INDEX IF NOT EXISTS idx_timeline_booking ON booking_timeline(booking_id, step_order);
+

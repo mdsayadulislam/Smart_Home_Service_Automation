@@ -80,3 +80,4 @@ INSERT INTO reviews (booking_id, customer_id, technician_id, rating, review_text
 -- 11. PROMOTIONS
 INSERT INTO promotions (title, badge_tag, discount_percentage, description, valid_until, is_active) VALUES
 ('20% off AC Servicing & Deep Cleaning', 'SUMMER COOL DEAL', 20, 'Stay chilled in Dhaka heat with verified pros.', '2026-09-30', 1);
+

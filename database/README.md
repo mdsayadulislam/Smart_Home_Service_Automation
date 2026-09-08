@@ -105,3 +105,4 @@ psql -U postgres -c "CREATE DATABASE homeease_db;"
 psql -U postgres -d homeease_db -f database/schema.sql
 psql -U postgres -d homeease_db -f database/seed_data.sql
 ```
+
