@@ -1,0 +1,48 @@
+/* =============================================
+   Smart Home Service Automation — Global Styles
+   ============================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary:       #3B2FC9;   /* deep indigo-blue */
+  --primary-light: #EEF0FF;   /* lavender tint bg */
+  --primary-mid:   #5B4EF0;   /* mid indigo */
+  --accent:        #FF6B2C;   /* orange dot accent */
+  --green:         #22C55E;   /* BD Secure green */
+  --text-dark:     #1A1A2E;
+  --text-muted:    #7C7C9D;
+  --text-light:    #ADADC9;
+  --border:        #E2E3F0;
+  --input-bg:      #F4F5FC;
+  --white:         #FFFFFF;
+  --shadow:        0 20px 60px rgba(59, 47, 201, 0.12);
+  --radius-card:   28px;
+  --radius-pill:   999px;
+  --radius-input:  14px;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #F0F2FF 0%, #E8EBFF 100%);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  padding: 24px 16px;
+}
+
+/* ── Utility ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
